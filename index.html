@@ -156,6 +156,9 @@
   p .inv { padding-top: 0; margin-right: 10px; white-space: normal; }
   @media (max-width: 640px) { .xrow { grid-template-columns: 40px minmax(0, 1fr); } .xrow .inv { grid-column: 2; } }
 
+  .xrow--plain { grid-template-columns: minmax(0, 1fr); }
+  .ms-text .tbc-inline { font-size: 14px; }
+
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
   .nav.scrolled { background: rgba(11,15,25,.72); border-bottom-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -189,36 +192,6 @@
   .risk { width: 100%; border-collapse: collapse; font: 12px 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
   .risk th, .risk td { padding: 6px 4px; text-align: right; color: var(--muted); border-top: 1px solid var(--line); }
   .risk th:first-child, .risk td:first-child { text-align: left; color: var(--text); }
-
-  /* TLF paper output */
-  .paper-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
-  .paper { min-width: 720px; background: #FBFBF8; color: #15181D; font: 12px/1.55 'JetBrains Mono', monospace; padding: 28px 32px 22px; border-radius: 12px; box-shadow: 0 30px 80px -40px rgba(0,0,0,.9), inset 0 0 0 1px rgba(0,0,0,.06); }
-  .paper .hdr { display: flex; justify-content: space-between; color: #4A5260; font-size: 11px; }
-  .paper .ttl { text-align: center; margin: 14px 0 12px; }
-  .paper .ttl b { font-weight: 500; }
-  .paper table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-  .paper thead th { font-weight: 500; text-align: right; padding: 6px 8px; border-top: 1.5px solid #15181D; border-bottom: 1px solid #15181D; vertical-align: bottom; }
-  .paper thead th:first-child { text-align: left; }
-  .paper td { padding: 3px 8px; text-align: right; vertical-align: top; }
-  .paper td:first-child { text-align: left; white-space: pre; }
-  .paper tbody tr.grp td { padding-top: 10px; }
-  .paper tbody tr:last-child td { border-bottom: 1.5px solid #15181D; padding-bottom: 8px; }
-  .paper.listing td { text-align: left; white-space: normal; }
-  .paper.listing thead th { text-align: left; }
-  .paper .foot { margin-top: 12px; color: #4A5260; font-size: 11px; display: grid; gap: 2px; }
-  .paper .prog { margin-top: 14px; display: flex; justify-content: space-between; gap: 12px; color: #6A7280; font-size: 10.5px; border-top: 1px solid #D9DCE1; padding-top: 8px; }
-  .paper-in { animation: paperIn .55s var(--ease-out) both; }
-  @keyframes paperIn { from { opacity: 0; transform: translateY(10px); } }
-  .export-overlay { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; border-radius: 20px; background: rgba(11,15,25,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: opacity .35s; }
-  .export-overlay:not(.open) { opacity: 0; pointer-events: none; }
-  .pring { width: 64px; height: 64px; }
-  .pring circle { fill: none; stroke-width: 3; }
-  .pring .trk { stroke: rgba(255,255,255,.08); }
-  .pring .prg { stroke: var(--emerald); stroke-linecap: round; stroke-dasharray: 176; stroke-dashoffset: 176; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset .5s var(--ease-io); filter: drop-shadow(0 0 6px rgba(52,211,153,.7)); }
-  .step { display: flex; gap: 10px; align-items: center; font: 12.5px 'JetBrains Mono', monospace; color: var(--dim); transition: color .3s; }
-  .step.on { color: var(--text); }
-  .step.done { color: var(--emerald); }
-  .step i, .step svg { width: 14px; height: 14px; }
 
   /* NONMEM code */
   .code { counter-reset: ln; font: 12.75px/1.75 'JetBrains Mono', monospace; overflow-x: auto; padding: 18px 0; margin: 0; tab-size: 2; }
@@ -280,7 +253,7 @@
     <nav aria-label="Main" class="hidden lg:flex items-center gap-7">
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#expertise">Expertise</a>
-      <a class="nav-link" href="#tlf">TLF engine</a>
+      <a class="nav-link" href="#speaking">Speaking &amp; Events</a>
       <a class="nav-link" href="#nonmem">NONMEM</a>
       <a class="nav-link" href="#contact">Contact</a>
     </nav>
@@ -291,7 +264,7 @@
     <nav aria-label="Mobile" class="glass p-3 grid">
       <a class="nav-link !text-[16px] !py-3 px-3" href="#about">About</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#expertise">Expertise</a>
-      <a class="nav-link !text-[16px] !py-3 px-3" href="#tlf">TLF engine</a>
+      <a class="nav-link !text-[16px] !py-3 px-3" href="#speaking">Speaking &amp; Events</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#nonmem">NONMEM</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#contact">Contact</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="https://www.shaficonsultancy.com/" target="_blank" rel="noopener">Shafi Consultancy ↗</a>
@@ -503,41 +476,50 @@
   </div>
 </section>
 
-<!-- ============================== TLF ENGINE ============================== -->
-<section id="tlf" class="py-20 lg:py-28">
+<!-- ============================== SPEAKING & EVENTS ============================== -->
+<section id="speaking" class="py-20 lg:py-28">
   <div class="wrap">
     <div class="reveal grid lg:grid-cols-12 gap-6 items-end mb-10">
       <div class="lg:col-span-7 grid gap-4">
-        <p class="kicker"><span class="dot dot-em"></span>Statistics · Reporting</p>
-        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">TLF reporting engine</h2>
+        <p class="kicker"><span class="dot dot-pu"></span>Speaking, conferences &amp; contributions</p>
+        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">Engaging with the clinical research community</h2>
       </div>
-      <p class="lg:col-span-5 text-mute leading-relaxed">Tables, listings and figures are the reviewed outputs of a clinical study. Switch between three typical outputs, generated here from simulated ADaM-style data.</p>
+      <p class="lg:col-span-5 text-mute leading-relaxed">Conferences, presentations, publications and knowledge-sharing in clinical programming and the wider pharmaceutical industry.</p>
     </div>
 
-    <div class="glass reveal relative" id="tlfFrame">
-      <div class="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-5 pt-4 pb-3 border-b border-white/10">
-        <div role="tablist" aria-label="Output" class="flex gap-1 overflow-x-auto max-w-full p-1 -m-1">
-          <button role="tab" aria-selected="true" aria-controls="tlfPanel" id="tlf-t" data-out="t" class="tab"><i data-lucide="table" class="inline w-4 h-4 mr-1.5 -mt-0.5"></i>Table 14.1 · Demographics</button>
-          <button role="tab" aria-selected="false" aria-controls="tlfPanel" id="tlf-l" data-out="l" class="tab" tabindex="-1"><i data-lucide="list" class="inline w-4 h-4 mr-1.5 -mt-0.5"></i>Listing 16.2 · Adverse events</button>
-          <button role="tab" aria-selected="false" aria-controls="tlfPanel" id="tlf-f" data-out="f" class="tab" tabindex="-1"><i data-lucide="activity" class="inline w-4 h-4 mr-1.5 -mt-0.5"></i>Figure 14.3 · Biomarker change</button>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <!-- communities -->
+      <div class="lg:col-span-5 glass hud reveal p-6 sm:p-7 grid gap-5 content-start min-w-0">
+        <div class="grid gap-2">
+          <p class="kicker !text-[10.5px]">Professional communities</p>
+          <h3 class="h-display text-[clamp(1.3rem,2vw,1.6rem)] font-semibold leading-[1.2]">Communities of interest</h3>
+          <p class="text-[12.5px] text-dim">Membership or participation will be stated only once confirmed.</p>
         </div>
-        <button class="btn btn-ghost !min-h-[42px] !text-[13.5px]" id="exportBtn"><i data-lucide="file-down"></i>Mock export to PDF</button>
-      </div>
-      <div class="p-4 sm:p-6">
-        <div class="paper-scroll" id="tlfPanel" role="tabpanel" aria-labelledby="tlf-t" tabindex="0"></div>
-      </div>
-      <div class="flex flex-wrap gap-x-6 gap-y-2 px-5 pb-5 font-mono text-[11.5px] text-dim">
-        <span id="tlfProg">Program: t_14_1_dm.sas</span>
-        <span id="tlfSrc">Source: ADSL</span>
-        <span class="inline-flex items-center gap-2"><span class="dot dot-em !w-[6px] !h-[6px]"></span>QC: independent double programming</span>
+        <ul class="xlist">
+          <li class="xrow xrow--plain"><div class="xrow__body"><h4 class="xrow__title">PHUSE</h4><p class="xrow__text">An independent, not-for-profit community for data scientists, statisticians and programmers in healthcare and life sciences.</p></div></li>
+          <li class="xrow xrow--plain"><div class="xrow__body"><h4 class="xrow__title">PSI — Statisticians in the Pharmaceutical Industry</h4><p class="xrow__text">A professional association supporting statisticians and related professionals across the pharmaceutical industry.</p></div></li>
+          <li class="xrow xrow--plain"><div class="xrow__body"><h4 class="xrow__title">PAGE — Population Approach Group in Europe</h4><p class="xrow__text">A scientific forum for pharmacometrics and population modelling, including PK/PD analysis.</p></div></li>
+        </ul>
       </div>
 
-      <div class="export-overlay" id="exportOverlay" aria-live="polite" role="status">
-        <div class="glass p-7 w-[min(360px,90%)] grid gap-5 justify-items-center text-center">
-          <svg class="pring" viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="28"/><circle class="prg" id="ringPrg" cx="32" cy="32" r="28"/></svg>
-          <p class="h-display text-[18px] font-semibold" id="exportTitle">Generating PDF</p>
-          <div class="grid gap-2.5 justify-self-stretch text-left" id="exportSteps"></div>
-          <p class="text-[12.5px] text-dim" id="exportNote">Demonstration only. No file is created.</p>
+      <!-- events -->
+      <div class="lg:col-span-7 glass reveal p-6 sm:p-7 grid gap-5 content-start min-w-0">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div class="grid gap-2">
+            <p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Conferences &amp; presentations</p>
+            <h3 class="h-display text-[clamp(1.3rem,2vw,1.6rem)] font-semibold leading-[1.2]">Events</h3>
+          </div>
+          <p class="text-[12.5px] text-dim">Add entries only where records exist.</p>
+        </div>
+        <ol class="milestones">
+          <li><p class="ms-when">Conference<br><span class="text-[11px] text-dim">Date to be confirmed</span></p><div class="ms-body"><p class="ms-text"><span class="tbc-inline">event name, location and Shafi's role</span></p></div></li>
+          <li><p class="ms-when">Presentation<br><span class="text-[11px] text-dim">Date to be confirmed</span></p><div class="ms-body"><p class="ms-text"><span class="tbc-inline">title, event and date</span></p></div></li>
+          <li><p class="ms-when">Training<br><span class="text-[11px] text-dim">Date to be confirmed</span></p><div class="ms-body"><p class="ms-text"><span class="tbc-inline">session, audience and date</span></p></div></li>
+        </ol>
+        <div class="tbc"><b>Publications to be supplied</b>Title, authors, journal or conference, year and a DOI or proceedings link for each.</div>
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-1">
+          <p class="text-[13px] text-dim">Publications and event photographs are on the Speaking &amp; Events page.</p>
+          <a href="speaking.html" class="btn btn-primary">More about speaking &amp; events <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -702,7 +684,7 @@
         links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['about', 'expertise', 'tlf', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
+    ['about', 'expertise', 'speaking', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
   }
 
   if (!RM && 'IntersectionObserver' in window) {
@@ -1013,146 +995,6 @@
     var tw = tip.offsetWidth, left = clamp(x, tw / 2 + 4, w - tw / 2 - 4);
     tip.style.left = left + 'px'; tip.style.top = Math.max(y, tip.offsetHeight + 18) + 'px';
   }
-
-  /* ======================================================================
-     TLF reporting engine
-     ====================================================================== */
-  (function tlf() {
-    var panel = document.getElementById('tlfPanel');
-    var ARMS = [['Placebo', 60], ['Drug X 10 mg', 61], ['Drug X 20 mg', 59], ['Total', 180]];
-    var now = new Date(), MON = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var stamp = ('0' + now.getDate()).slice(-2) + MON[now.getMonth()] + now.getFullYear() + ' ' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
-    function np(n, N) { return n + ' (' + (n / N * 100).toFixed(1) + ')'; }
-    function catRows(label, cats) {
-      return '<tr class="grp"><td>' + label + '</td><td></td><td></td><td></td><td></td></tr>' +
-        cats.map(function (c) { return '<tr><td>  ' + c[0] + '</td>' + c[1].map(function (n, i) { return '<td>' + np(n, ARMS[i][1]) + '</td>'; }).join('') + '</tr>'; }).join('');
-    }
-    function page(title, pop, body, foot, prog, cls) {
-      return '<div class="paper paper-in ' + (cls || '') + '">' +
-        '<div class="hdr"><span>Protocol: DEMO-001 (simulated)</span><span>Page 1 of 1</span></div>' +
-        '<div class="ttl"><b>' + title + '</b><br>' + pop + '</div>' + body +
-        '<div class="foot">' + foot.map(function (f) { return '<span>' + f + '</span>'; }).join('') + '</div>' +
-        '<div class="prog"><span>Program: ' + prog + '</span><span>' + stamp + '</span></div></div>';
-    }
-    var head = '<thead><tr><th></th>' + ARMS.map(function (a) { return '<th>' + a[0] + '<br>(N=' + a[1] + ')</th>'; }).join('') + '</tr></thead>';
-    var T = page('Table 14.1.1 Summary of Demographic and Baseline Characteristics', 'Safety Population',
-      '<table>' + head + '<tbody>' +
-      '<tr class="grp"><td>Age (years)</td><td></td><td></td><td></td><td></td></tr>' +
-      '<tr><td>  n</td><td>60</td><td>61</td><td>59</td><td>180</td></tr>' +
-      '<tr><td>  Mean (SD)</td><td>54.2 (11.3)</td><td>53.8 (10.9)</td><td>55.1 (12.0)</td><td>54.4 (11.4)</td></tr>' +
-      '<tr><td>  Median</td><td>54.0</td><td>53.5</td><td>55.0</td><td>54.0</td></tr>' +
-      '<tr><td>  Min, Max</td><td>28, 78</td><td>31, 77</td><td>29, 79</td><td>28, 79</td></tr>' +
-      catRows('Age group, n (%)', [['&lt;65 years', [47, 49, 44, 140]], ['≥65 years', [13, 12, 15, 40]]]) +
-      catRows('Sex, n (%)', [['Male', [32, 30, 33, 95]], ['Female', [28, 31, 26, 85]]]) +
-      catRows('Race, n (%)', [['White', [41, 43, 40, 124]], ['Black or African American', [9, 8, 10, 27]], ['Asian', [7, 8, 6, 21]], ['Other', [3, 2, 3, 8]]]) +
-      '<tr class="grp"><td>BMI (kg/m²)</td><td></td><td></td><td></td><td></td></tr>' +
-      '<tr><td>  Mean (SD)</td><td>27.3 (4.6)</td><td>27.9 (4.9)</td><td>27.1 (4.4)</td><td>27.4 (4.6)</td></tr>' +
-      '</tbody></table>',
-      ['Percentages are based on the number of subjects in each treatment group (N).', 'SD = standard deviation; BMI = body mass index. Source: ADSL.', 'Data are simulated for demonstration and do not represent a real study.'],
-      't_14_1_dm.sas');
-    var AE = [
-      ['1003', 'Placebo', 'Nervous system disorders', 'Headache', 4, 'Mild', 'N', 'Not related', 'Recovered'],
-      ['1011', 'Drug X 10 mg', 'Gastrointestinal disorders', 'Nausea', 2, 'Mild', 'N', 'Possible', 'Recovered'],
-      ['1011', 'Drug X 10 mg', 'Gastrointestinal disorders', 'Vomiting', 3, 'Moderate', 'N', 'Possible', 'Recovered'],
-      ['1027', 'Drug X 20 mg', 'Investigations', 'Alanine aminotransferase increased', 29, 'Moderate', 'N', 'Probable', 'Recovering'],
-      ['1034', 'Placebo', 'Infections and infestations', 'Nasopharyngitis', 15, 'Mild', 'N', 'Not related', 'Recovered'],
-      ['1042', 'Drug X 20 mg', 'Skin and subcutaneous tissue disorders', 'Rash maculo-papular', 8, 'Moderate', 'N', 'Probable', 'Recovered'],
-      ['1058', 'Drug X 10 mg', 'General disorders and administration site conditions', 'Fatigue', 12, 'Mild', 'N', 'Possible', 'Ongoing'],
-      ['1066', 'Drug X 20 mg', 'Nervous system disorders', 'Dizziness', 6, 'Mild', 'N', 'Possible', 'Recovered'],
-      ['1071', 'Drug X 20 mg', 'Cardiac disorders', 'Atrial fibrillation', 41, 'Severe', 'Y', 'Not related', 'Recovered with sequelae'],
-      ['1085', 'Placebo', 'Musculoskeletal and connective tissue disorders', 'Arthralgia', 22, 'Mild', 'N', 'Not related', 'Recovered']
-    ];
-    var prevSubj = '';
-    var L = page('Listing 16.2.7 Treatment-Emergent Adverse Events', 'Safety Population',
-      '<table><thead><tr><th>Subject</th><th>Treatment</th><th>System organ class /<br>Preferred term</th><th>Start<br>day</th><th>Severity</th><th>Serious</th><th>Relationship</th><th>Outcome</th></tr></thead><tbody>' +
-      AE.map(function (r) {
-        var same = r[0] === prevSubj; prevSubj = r[0];
-        return '<tr' + (same ? '' : ' class="grp"') + '><td>' + (same ? '' : 'DEMO-01-' + r[0]) + '</td><td>' + (same ? '' : r[1]) + '</td><td>' + r[2] + '/<br>  ' + r[3] + '</td><td>' + r[4] + '</td><td>' + r[5] + '</td><td>' + r[6] + '</td><td>' + r[7] + '</td><td>' + r[8] + '</td></tr>';
-      }).join('') + '</tbody></table>',
-      ['Coded using MedDRA. Start day is relative to the first dose of study treatment (Day 1).', 'Source: ADAE. Data are simulated for demonstration and do not represent a real study.'],
-      'l_16_2_7_ae.sas', 'listing');
-    var F = page('Figure 14.3.1 Mean (±SE) Change from Baseline in Biomarker Level by Visit', 'Efficacy Population',
-      '<canvas id="figCanvas" style="width:100%;height:330px;display:block" role="img" aria-label="Line chart of mean change from baseline in biomarker level for three treatment groups over 16 weeks"></canvas>',
-      ['SE = standard error. Change from baseline = post-baseline value − baseline value.', 'Source: ADLB. Data are simulated for demonstration and do not represent a real study.'],
-      'f_14_3_1_bio.sas');
-    var OUT = { t: { html: T, prog: 't_14_1_dm.sas', src: 'ADSL', name: 'Table 14.1' }, l: { html: L, prog: 'l_16_2_7_ae.sas', src: 'ADAE', name: 'Listing 16.2' }, f: { html: F, prog: 'f_14_3_1_bio.sas', src: 'ADLB', name: 'Figure 14.3' } };
-    var cur = 't';
-
-    function drawFig() {
-      var cv = document.getElementById('figCanvas'); if (!cv) return;
-      var c = setupCanvas(cv), g = c.g, w = c.w, h = c.h, pad = { l: 64, r: 150, t: 12, b: 46 }, pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
-      var wk = [0, 2, 4, 8, 12, 16], ymin = -18, ymax = 2;
-      var series = [
-        { n: 'Placebo', m: [0, -1.2, -1.8, -2.1, -2.4, -2.2], se: [0, 1.1, 1.2, 1.3, 1.4, 1.4], dash: [], mk: 'o' },
-        { n: 'Drug X 10 mg', m: [0, -3.5, -6.1, -8.4, -9.8, -10.3], se: [0, 1.2, 1.3, 1.4, 1.5, 1.6], dash: [6, 4], mk: 't' },
-        { n: 'Drug X 20 mg', m: [0, -5.2, -9.4, -12.8, -14.6, -15.1], se: [0, 1.2, 1.4, 1.5, 1.5, 1.6], dash: [2, 3], mk: 's' }
-      ];
-      var X = function (v) { return pad.l + v / 16 * pw; }, Y = function (v) { return pad.t + (ymax - v) / (ymax - ymin) * ph; };
-      g.fillStyle = '#FBFBF8'; g.fillRect(0, 0, w, h);
-      g.strokeStyle = '#15181D'; g.lineWidth = 1; g.font = '11px "JetBrains Mono", monospace'; g.fillStyle = '#15181D';
-      g.beginPath(); g.moveTo(pad.l, pad.t); g.lineTo(pad.l, pad.t + ph); g.lineTo(pad.l + pw, pad.t + ph); g.stroke();
-      g.textAlign = 'right';
-      for (var v = ymin; v <= ymax; v += 4) { var y = Y(v); g.beginPath(); g.moveTo(pad.l - 4, y); g.lineTo(pad.l, y); g.stroke(); g.fillText(v, pad.l - 8, y + 4); }
-      g.strokeStyle = '#B8BCC4'; g.setLineDash([2, 2]); g.beginPath(); g.moveTo(pad.l, Y(0)); g.lineTo(pad.l + pw, Y(0)); g.stroke(); g.setLineDash([]);
-      g.strokeStyle = '#15181D'; g.textAlign = 'center';
-      wk.forEach(function (x) { g.beginPath(); g.moveTo(X(x), pad.t + ph); g.lineTo(X(x), pad.t + ph + 4); g.stroke(); g.fillText(x === 0 ? 'BL' : 'Wk ' + x, X(x), pad.t + ph + 18); });
-      g.fillText('Visit', pad.l + pw / 2, pad.t + ph + 38);
-      g.save(); g.translate(16, pad.t + ph / 2); g.rotate(-Math.PI / 2); g.fillText('Mean change from baseline (units)', 0, 0); g.restore();
-      series.forEach(function (s, si) {
-        var off = (si - 1) * .22;
-        g.strokeStyle = '#15181D'; g.lineWidth = 1.4; g.setLineDash(s.dash); g.beginPath();
-        wk.forEach(function (x, i) { var px = X(x + off), py = Y(s.m[i]); if (i) g.lineTo(px, py); else g.moveTo(px, py); }); g.stroke(); g.setLineDash([]);
-        g.lineWidth = 1;
-        wk.forEach(function (x, i) {
-          var px = X(x + off), py = Y(s.m[i]);
-          if (s.se[i]) { g.beginPath(); g.moveTo(px, Y(s.m[i] - s.se[i])); g.lineTo(px, Y(s.m[i] + s.se[i])); g.moveTo(px - 3, Y(s.m[i] - s.se[i])); g.lineTo(px + 3, Y(s.m[i] - s.se[i])); g.moveTo(px - 3, Y(s.m[i] + s.se[i])); g.lineTo(px + 3, Y(s.m[i] + s.se[i])); g.stroke(); }
-          marker(g, s.mk, px, py);
-        });
-        var ly = pad.t + 20 + si * 22, lx = pad.l + pw + 18;
-        g.setLineDash(s.dash); g.lineWidth = 1.4; g.beginPath(); g.moveTo(lx, ly); g.lineTo(lx + 26, ly); g.stroke(); g.setLineDash([]); g.lineWidth = 1;
-        marker(g, s.mk, lx + 13, ly); g.textAlign = 'left'; g.fillText(s.n, lx + 34, ly + 4);
-      });
-    }
-    function marker(g, k, x, y) {
-      g.fillStyle = '#FBFBF8'; g.beginPath();
-      if (k === 'o') g.arc(x, y, 3.5, 0, 7);
-      else if (k === 's') g.rect(x - 3.5, y - 3.5, 7, 7);
-      else { g.moveTo(x, y - 4.5); g.lineTo(x + 4, y + 3); g.lineTo(x - 4, y + 3); g.closePath(); }
-      g.fill(); g.stroke(); g.fillStyle = '#15181D';
-    }
-    function show(k) {
-      cur = k; panel.innerHTML = OUT[k].html;
-      document.getElementById('tlfProg').textContent = 'Program: ' + OUT[k].prog;
-      document.getElementById('tlfSrc').textContent = 'Source: ' + OUT[k].src;
-      panel.setAttribute('aria-labelledby', 'tlf-' + k);
-      if (k === 'f') drawFig();
-    }
-    var tabs = [].slice.call(document.querySelectorAll('[data-out]'));
-    function sel(b) { selectTab(tabs, b); show(b.getAttribute('data-out')); }
-    tabs.forEach(function (b) { b.addEventListener('click', function () { sel(b); }); });
-    tabKeys(tabs, sel);
-    window.addEventListener('resize', function () { if (cur === 'f') drawFig(); });
-    show('t');
-
-    /* mock export */
-    var btn = document.getElementById('exportBtn'), ov = document.getElementById('exportOverlay'), ring = document.getElementById('ringPrg');
-    var stepsEl = document.getElementById('exportSteps'), title = document.getElementById('exportTitle'), note = document.getElementById('exportNote');
-    btn.addEventListener('click', function () {
-      var name = OUT[cur].name;
-      var steps = ['Checking ' + OUT[cur].src + ' metadata', 'Rendering ' + name, 'Applying titles, footnotes and pagination', 'Writing PDF'];
-      stepsEl.innerHTML = steps.map(function (s) { return '<div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg><span>' + s + '</span></div>'; }).join('');
-      title.textContent = 'Generating PDF'; note.textContent = 'Demonstration only. No file is created.';
-      ring.style.strokeDashoffset = 176; ov.classList.add('open'); btn.disabled = true;
-      var rows = stepsEl.children, i = 0, dt = RM ? 60 : 520;
-      (function next() {
-        if (i > 0) { rows[i - 1].className = 'step done'; rows[i - 1].querySelector('svg').innerHTML = '<path d="M5 12l5 5 9-10"/>'; }
-        if (i < rows.length) { rows[i].className = 'step on'; ring.style.strokeDashoffset = 176 - 176 * (i + .5) / rows.length; i++; setTimeout(next, dt); return; }
-        ring.style.strokeDashoffset = 0; title.textContent = 'Mock export complete';
-        note.textContent = name + ' was rendered for this demonstration. No file was created or downloaded.';
-        setTimeout(function () { ov.classList.remove('open'); btn.disabled = false; }, RM ? 1200 : 2200);
-      })();
-    });
-  })();
 
   /* ======================================================================
      NONMEM hub — control stream, mock run, DV vs PRED
