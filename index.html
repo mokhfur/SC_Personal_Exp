@@ -272,7 +272,7 @@
 <main id="main" class="layer">
 
 <!-- ============================== HERO ============================== -->
-<section id="hero" class="relative pt-[132px] pb-16 lg:pt-[168px] lg:pb-24">
+<section id="hero" class="relative pt-[290px] pb-16 lg:pt-[168px] lg:pb-24">
   <div class="wrap">
     <div class="max-w-[720px] grid gap-7">
       <p class="kicker hero-in" style="--d:0"><span class="dot dot-cy"></span>Founder &amp; Managing Director · Shafi Consultancy Ltd.</p>
@@ -730,6 +730,122 @@
     return s;
   }
 
+
+  /* ======================================================================
+     Shafi Consultancy emblem — traced from the company logo, extruded in 3D.
+     Timeline: particles assemble (0–2.4 s), disc solidifies, bands sweep in,
+     orbit rings draw on, then idle float. update(t, fade) is called per frame.
+     ====================================================================== */
+  var LOGO = {"color":"#BE1E2D","bands":[[[-0.4294,0.7958],[-0.4387,0.7828],[-0.4517,0.7569],[-0.4517,0.7541],[-0.4554,0.7476],[-0.4554,0.7449],[-0.4591,0.7365],[-0.4591,0.7319],[-0.4609,0.7291],[-0.4609,0.7226],[-0.4646,0.7125],[-0.4646,0.6921],[-0.4628,0.6902],[-0.4591,0.6902],[-0.447,0.6958],[-0.4424,0.6958],[-0.4396,0.6976],[-0.435,0.6976],[-0.4267,0.7013],[-0.4202,0.7013],[-0.41,0.7051],[-0.4035,0.7051],[-0.4007,0.7069],[-0.3943,0.7069],[-0.3915,0.7088],[-0.385,0.7088],[-0.3822,0.7106],[-0.3702,0.7106],[-0.3674,0.7125],[-0.3609,0.7125],[-0.3581,0.7143],[-0.3387,0.7143],[-0.3359,0.7162],[-0.3276,0.7162],[-0.3248,0.718],[-0.2109,0.718],[-0.2082,0.7162],[-0.1961,0.7162],[-0.1934,0.7143],[-0.1758,0.7143],[-0.173,0.7125],[-0.1665,0.7125],[-0.1637,0.7106],[-0.1517,0.7106],[-0.1489,0.7088],[-0.1424,0.7088],[-0.1397,0.7069],[-0.1313,0.7069],[-0.1286,0.7051],[-0.1221,0.7051],[-0.1119,0.7013],[-0.1054,0.7013],[-0.0971,0.6976],[-0.0887,0.6976],[-0.0804,0.6939],[-0.0758,0.6939],[-0.06,0.6884],[-0.0554,0.6884],[-0.0471,0.6847],[-0.0425,0.6847],[-0.036,0.681],[-0.0313,0.681],[-0.0249,0.6773],[-0.0054,0.6717],[0.0011,0.668],[0.0038,0.668],[0.0103,0.6643],[0.0223,0.6606],[0.0325,0.6551],[0.0353,0.6551],[0.1094,0.618],[0.114,0.6143],[0.1223,0.6106],[0.1501,0.594],[0.1844,0.5699],[0.189,0.568],[0.1973,0.5606],[0.202,0.5588],[0.2334,0.5347],[0.2686,0.506],[0.2732,0.5005],[0.3019,0.4764],[0.3195,0.4579],[0.3445,0.4356],[0.3658,0.4144],[0.3825,0.3949],[0.401,0.3773],[0.4408,0.331],[0.4723,0.2922],[0.4741,0.2875],[0.4871,0.2718],[0.5019,0.2486],[0.5075,0.2422],[0.5352,0.1959],[0.5556,0.1551],[0.5556,0.1524],[0.5612,0.1412],[0.5612,0.1375],[0.5686,0.1218],[0.5686,0.119],[0.5741,0.1051],[0.5741,0.1005],[0.5778,0.0922],[0.5778,0.0857],[0.5815,0.0774],[0.5815,0.0672],[0.5852,0.057],[0.5852,0.0376],[0.5871,0.0348],[0.5871,0.0135],[0.5852,0.0107],[0.5852,-0.005],[0.5815,-0.0152],[0.5815,-0.0217],[0.5778,-0.0282],[0.5778,-0.0356],[0.5815,-0.0356],[0.5917,-0.0282],[0.5963,-0.0263],[0.626,-0.0032],[0.65,0.0209],[0.6713,0.0468],[0.688,0.0727],[0.7047,0.1061],[0.7065,0.1144],[0.7102,0.1209],[0.7121,0.1311],[0.7176,0.1468],[0.7176,0.1551],[0.7213,0.1653],[0.7213,0.1829],[0.7232,0.1857],[0.7232,0.2255],[0.7213,0.2283],[0.7213,0.2477],[0.7176,0.2579],[0.7176,0.2662],[0.7158,0.269],[0.7158,0.2755],[0.7121,0.2838],[0.7121,0.2884],[0.7084,0.2968],[0.7084,0.3033],[0.7047,0.3097],[0.7047,0.3144],[0.6972,0.3301],[0.6954,0.3384],[0.688,0.3523],[0.688,0.3551],[0.6621,0.4051],[0.6565,0.4116],[0.6436,0.4347],[0.638,0.4412],[0.6269,0.4588],[0.5917,0.5051],[0.5408,0.5634],[0.4964,0.6088],[0.4889,0.6143],[0.4741,0.6291],[0.4621,0.6384],[0.4556,0.6458],[0.3834,0.7041],[0.3714,0.7115],[0.339,0.7356],[0.3343,0.7375],[0.2982,0.7615],[0.2677,0.7782],[0.2631,0.7819],[0.251,0.7874],[0.2464,0.7911],[0.1945,0.8171],[0.1918,0.8171],[0.1612,0.8319],[0.1584,0.8319],[0.1483,0.8374],[0.1399,0.8393],[0.1288,0.8448],[0.1251,0.8448],[0.1186,0.8485],[0.0992,0.8541],[0.0927,0.8578],[0.0881,0.8578],[0.0816,0.8615],[0.077,0.8615],[0.0686,0.8652],[0.064,0.8652],[0.0612,0.8671],[0.0585,0.8671],[0.0501,0.8708],[0.0455,0.8708],[0.0372,0.8745],[0.0307,0.8745],[0.0223,0.8782],[0.0159,0.8782],[0.0075,0.8819],[0.0011,0.8819],[-0.0017,0.8837],[-0.0082,0.8837],[-0.011,0.8856],[-0.0175,0.8856],[-0.0202,0.8874],[-0.0286,0.8874],[-0.0388,0.8911],[-0.0508,0.8911],[-0.061,0.8948],[-0.0804,0.8948],[-0.0832,0.8967],[-0.0934,0.8967],[-0.0962,0.8985],[-0.1267,0.8985],[-0.1295,0.9004],[-0.1785,0.9004],[-0.1813,0.8985],[-0.21,0.8985],[-0.2128,0.8967],[-0.223,0.8967],[-0.2258,0.8948],[-0.2396,0.8948],[-0.2498,0.8911],[-0.26,0.8911],[-0.2683,0.8874],[-0.2748,0.8874],[-0.2906,0.8819],[-0.2952,0.8819],[-0.298,0.88],[-0.3174,0.8745],[-0.3369,0.8652],[-0.3396,0.8652],[-0.3767,0.8448],[-0.4081,0.8198]],[[-0.4766,0.6199],[-0.497,0.5995],[-0.522,0.5662],[-0.5387,0.5329],[-0.5387,0.5301],[-0.5442,0.518],[-0.5461,0.5079],[-0.5516,0.494],[-0.5516,0.4856],[-0.5553,0.4755],[-0.5553,0.4634],[-0.5572,0.4606],[-0.5572,0.4505],[-0.559,0.4477],[-0.559,0.3745],[-0.5572,0.3718],[-0.5572,0.3597],[-0.5553,0.357],[-0.5553,0.3412],[-0.5535,0.3384],[-0.5535,0.332],[-0.5516,0.3292],[-0.5516,0.319],[-0.5479,0.3088],[-0.5479,0.3005],[-0.5461,0.2977],[-0.5461,0.2931],[-0.5424,0.2829],[-0.5424,0.2764],[-0.5387,0.2681],[-0.5387,0.2616],[-0.535,0.2551],[-0.535,0.2486],[-0.5313,0.2403],[-0.5313,0.2357],[-0.5294,0.2329],[-0.5146,0.1857],[-0.5109,0.1792],[-0.509,0.1709],[-0.5016,0.1551],[-0.5016,0.1505],[-0.4961,0.1403],[-0.4924,0.1283],[-0.4794,0.1033],[-0.4794,0.1005],[-0.4683,0.0811],[-0.4683,0.0783],[-0.4517,0.0468],[-0.4257,0.0042],[-0.4202,-0.0022],[-0.4183,-0.0069],[-0.3887,-0.0495],[-0.3396,-0.1106],[-0.3359,-0.1133],[-0.323,-0.1291],[-0.3082,-0.143],[-0.3026,-0.1504],[-0.2832,-0.1698],[-0.2758,-0.1754],[-0.2619,-0.1902],[-0.2184,-0.2281],[-0.1582,-0.2744],[-0.0897,-0.3189],[-0.0573,-0.3355],[-0.0526,-0.3392],[-0.0156,-0.3577],[-0.0128,-0.3577],[0.0177,-0.3726],[0.0205,-0.3726],[0.0409,-0.3818],[0.0446,-0.3818],[0.051,-0.3855],[0.0557,-0.3855],[0.0622,-0.3892],[0.0649,-0.3892],[0.0788,-0.3948],[0.0835,-0.3948],[0.0899,-0.3985],[0.0964,-0.3985],[0.1047,-0.4022],[0.1094,-0.4022],[0.1177,-0.4059],[0.1242,-0.4059],[0.127,-0.4077],[0.1316,-0.4077],[0.1418,-0.4114],[0.152,-0.4114],[0.1603,-0.4151],[0.176,-0.4151],[0.1788,-0.417],[0.1871,-0.417],[0.1899,-0.4188],[0.2723,-0.4188],[0.2751,-0.417],[0.2816,-0.417],[0.2843,-0.4151],[0.2945,-0.4151],[0.2973,-0.4133],[0.3019,-0.4133],[0.3047,-0.4114],[0.3167,-0.4096],[0.3195,-0.4077],[0.339,-0.4022],[0.3723,-0.3855],[0.4019,-0.3642],[0.4204,-0.3457],[0.439,-0.3216],[0.4547,-0.2929],[0.4565,-0.2874],[0.4547,-0.2846],[0.4491,-0.2846],[0.4408,-0.2883],[0.4214,-0.2883],[0.4186,-0.2902],[0.3732,-0.2902],[0.3704,-0.2883],[0.3454,-0.2883],[0.3427,-0.2865],[0.3362,-0.2865],[0.3334,-0.2846],[0.3214,-0.2846],[0.3186,-0.2828],[0.3029,-0.2809],[0.3001,-0.2791],[0.2955,-0.2791],[0.2853,-0.2754],[0.2788,-0.2754],[0.2705,-0.2716],[0.264,-0.2716],[0.239,-0.2624],[0.2344,-0.2624],[0.2279,-0.2587],[0.2084,-0.2531],[0.1982,-0.2476],[0.1862,-0.2439],[0.139,-0.2217],[0.101,-0.2013],[0.0909,-0.1939],[0.0714,-0.1828],[0.0649,-0.1772],[0.0436,-0.1643],[0.0011,-0.1328],[-0.0249,-0.1115],[-0.0786,-0.0633],[-0.1036,-0.0384],[-0.1165,-0.0226],[-0.1258,-0.0143],[-0.135,-0.0022],[-0.1424,0.0042],[-0.1785,0.0468],[-0.2174,0.0968],[-0.2248,0.1088],[-0.2322,0.1172],[-0.2341,0.1218],[-0.2415,0.1301],[-0.2433,0.1348],[-0.2489,0.1412],[-0.2508,0.1459],[-0.2748,0.1801],[-0.2841,0.1977],[-0.2989,0.2209],[-0.3211,0.2653],[-0.3211,0.2681],[-0.3378,0.3042],[-0.3378,0.3079],[-0.3415,0.3144],[-0.3415,0.3181],[-0.3452,0.3246],[-0.3452,0.3273],[-0.3544,0.3523],[-0.3544,0.3588],[-0.3581,0.3653],[-0.3581,0.3699],[-0.36,0.3727],[-0.36,0.3773],[-0.3618,0.3801],[-0.3618,0.3847],[-0.3656,0.3949],[-0.3656,0.4014],[-0.3674,0.4042],[-0.3674,0.4107],[-0.3693,0.4134],[-0.3693,0.4199],[-0.3711,0.4227],[-0.3711,0.4329],[-0.373,0.4356],[-0.373,0.4421],[-0.3748,0.4449],[-0.3748,0.4643],[-0.3767,0.4671],[-0.3767,0.481],[-0.3785,0.4838],[-0.3785,0.5458],[-0.3767,0.5486],[-0.3767,0.5606],[-0.3748,0.5634],[-0.3748,0.5828],[-0.373,0.5856],[-0.373,0.5921],[-0.3711,0.5949],[-0.3711,0.6051],[-0.3674,0.6153],[-0.3674,0.6217],[-0.3656,0.6245],[-0.3656,0.6291],[-0.3618,0.6375],[-0.3618,0.6421],[-0.3581,0.6504],[-0.3581,0.6551],[-0.3544,0.6615],[-0.3544,0.6662],[-0.3507,0.6726],[-0.3507,0.6764],[-0.3535,0.6782],[-0.3628,0.6745],[-0.3693,0.6745],[-0.372,0.6726],[-0.3841,0.6708],[-0.3905,0.6671],[-0.3952,0.6671],[-0.4054,0.6615],[-0.4091,0.6615],[-0.4415,0.6449],[-0.4517,0.6375],[-0.4563,0.6356]],[[0.5602,-0.3726],[0.5584,-0.3698],[0.5584,-0.3559],[0.5547,-0.3457],[0.5547,-0.3392],[0.551,-0.3309],[0.551,-0.3244],[0.5473,-0.3179],[0.5473,-0.3133],[0.5306,-0.2763],[0.5269,-0.2716],[0.5213,-0.2596],[0.5195,-0.2578],[0.5167,-0.2578],[0.513,-0.2615],[0.5075,-0.2735],[0.4945,-0.2939],[0.4667,-0.3309],[0.4528,-0.3476],[0.4112,-0.3892],[0.3834,-0.4124],[0.3371,-0.4457],[0.3001,-0.4679],[0.2445,-0.4957],[0.2325,-0.4994],[0.2131,-0.5086],[0.2094,-0.5086],[0.2029,-0.5124],[0.1992,-0.5124],[0.1927,-0.5161],[0.1899,-0.5161],[0.1649,-0.5253],[0.1603,-0.5253],[0.1538,-0.529],[0.1492,-0.529],[0.1409,-0.5327],[0.1344,-0.5327],[0.126,-0.5364],[0.114,-0.5383],[0.1057,-0.542],[0.0973,-0.542],[0.089,-0.5457],[0.0807,-0.5457],[0.0705,-0.5494],[0.0603,-0.5494],[0.0501,-0.5531],[0.0418,-0.5531],[0.039,-0.5549],[0.0288,-0.5549],[0.0261,-0.5568],[0.0177,-0.5568],[0.0149,-0.5586],[0.0029,-0.5586],[0.0001,-0.5605],[-0.0063,-0.5605],[-0.0091,-0.5623],[-0.0267,-0.5623],[-0.0295,-0.5642],[-0.0378,-0.5642],[-0.0406,-0.566],[-0.0619,-0.566],[-0.0647,-0.5679],[-0.0767,-0.5679],[-0.0795,-0.5698],[-0.1026,-0.5698],[-0.1054,-0.5716],[-0.1397,-0.5716],[-0.1424,-0.5735],[-0.2341,-0.5735],[-0.2369,-0.5716],[-0.2656,-0.5716],[-0.2683,-0.5698],[-0.2896,-0.5698],[-0.2924,-0.5679],[-0.3026,-0.5679],[-0.3054,-0.566],[-0.3248,-0.566],[-0.335,-0.5623],[-0.3507,-0.5623],[-0.3609,-0.5586],[-0.3711,-0.5586],[-0.3739,-0.5568],[-0.3804,-0.5568],[-0.3831,-0.5549],[-0.3989,-0.5531],[-0.4072,-0.5494],[-0.4137,-0.5494],[-0.422,-0.5457],[-0.4304,-0.5457],[-0.4368,-0.542],[-0.4433,-0.542],[-0.4572,-0.5364],[-0.4618,-0.5364],[-0.4646,-0.5346],[-0.5007,-0.5235],[-0.5072,-0.5198],[-0.51,-0.5198],[-0.5165,-0.5161],[-0.5192,-0.5161],[-0.5257,-0.5124],[-0.5377,-0.5086],[-0.5479,-0.5031],[-0.5507,-0.5031],[-0.584,-0.4864],[-0.5887,-0.4827],[-0.597,-0.479],[-0.6248,-0.4624],[-0.6544,-0.442],[-0.6646,-0.4327],[-0.6766,-0.4244],[-0.7016,-0.4022],[-0.7146,-0.3874],[-0.7238,-0.379],[-0.7433,-0.354],[-0.746,-0.354],[-0.7498,-0.3596],[-0.7498,-0.3624],[-0.7553,-0.3763],[-0.7553,-0.3809],[-0.759,-0.3892],[-0.759,-0.4013],[-0.7609,-0.404],[-0.7609,-0.4179],[-0.7627,-0.4207],[-0.7627,-0.4364],[-0.7609,-0.4392],[-0.7609,-0.4531],[-0.759,-0.4559],[-0.759,-0.4679],[-0.7553,-0.4762],[-0.7553,-0.4827],[-0.7535,-0.4855],[-0.746,-0.5105],[-0.7294,-0.5438],[-0.7164,-0.5642],[-0.7109,-0.5707],[-0.709,-0.5753],[-0.6683,-0.6216],[-0.6285,-0.6558],[-0.6007,-0.6762],[-0.5961,-0.6781],[-0.5748,-0.6929],[-0.5627,-0.6984],[-0.5377,-0.7132],[-0.4896,-0.7355],[-0.4868,-0.7355],[-0.4711,-0.7429],[-0.4628,-0.7447],[-0.4563,-0.7484],[-0.4424,-0.7521],[-0.4359,-0.7558],[-0.4313,-0.7558],[-0.4248,-0.7595],[-0.4128,-0.7614],[-0.3989,-0.7669],[-0.3868,-0.7688],[-0.3785,-0.7725],[-0.372,-0.7725],[-0.3637,-0.7762],[-0.3554,-0.7762],[-0.3452,-0.7799],[-0.3369,-0.7799],[-0.3267,-0.7836],[-0.3183,-0.7836],[-0.3156,-0.7855],[-0.3054,-0.7855],[-0.3026,-0.7873],[-0.2943,-0.7873],[-0.2915,-0.7892],[-0.2795,-0.7892],[-0.2767,-0.791],[-0.2702,-0.791],[-0.2674,-0.7929],[-0.2424,-0.7929],[-0.2396,-0.7947],[-0.2258,-0.7947],[-0.223,-0.7966],[-0.0999,-0.7966],[-0.0971,-0.7947],[-0.0813,-0.7947],[-0.0786,-0.7929],[-0.0536,-0.7929],[-0.0508,-0.791],[-0.0443,-0.791],[-0.0415,-0.7892],[-0.0258,-0.7892],[-0.023,-0.7873],[-0.0147,-0.7873],[-0.0119,-0.7855],[-0.0036,-0.7855],[-0.0008,-0.7836],[0.0186,-0.7818],[0.0214,-0.7799],[0.0279,-0.7799],[0.0307,-0.7781],[0.0372,-0.7781],[0.0399,-0.7762],[0.0483,-0.7762],[0.0585,-0.7725],[0.0649,-0.7725],[0.0677,-0.7706],[0.0723,-0.7706],[0.0751,-0.7688],[0.0797,-0.7688],[0.0825,-0.7669],[0.0872,-0.7669],[0.0899,-0.7651],[0.102,-0.7632],[0.1103,-0.7595],[0.1168,-0.7595],[0.1196,-0.7577],[0.1297,-0.7558],[0.1436,-0.7503],[0.1483,-0.7503],[0.1547,-0.7466],[0.1594,-0.7466],[0.1677,-0.7429],[0.1723,-0.7429],[0.1788,-0.7392],[0.1834,-0.7392],[0.1899,-0.7355],[0.1982,-0.7336],[0.2047,-0.7299],[0.2094,-0.7299],[0.2344,-0.7188],[0.2427,-0.717],[0.2621,-0.7077],[0.2705,-0.7058],[0.288,-0.6966],[0.2908,-0.6966],[0.351,-0.667],[0.3584,-0.6614],[0.3704,-0.6558],[0.3843,-0.6466],[0.3908,-0.6438],[0.3945,-0.6401],[0.4056,-0.6336],[0.4121,-0.6281],[0.4167,-0.6262],[0.4251,-0.6188],[0.439,-0.6096],[0.4686,-0.5846],[0.4889,-0.5642],[0.5139,-0.5327],[0.5232,-0.517],[0.5288,-0.5105],[0.5436,-0.4809],[0.5436,-0.4781],[0.5454,-0.4753],[0.5473,-0.467],[0.551,-0.4605],[0.551,-0.4559],[0.5547,-0.4475],[0.5547,-0.4411],[0.5584,-0.4309],[0.5584,-0.417],[0.5602,-0.4142]]]};
+  function buildEmblem(SPR, scene, coreObj) {
+    var RED = new THREE.Color(LOGO.color), WHITE = new THREE.Color(0xffffff);
+    var seg = function (t, a, b) { return clamp((t - a) / (b - a), 0, 1); };
+    var eIO = function (x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+    var eBack = function (x) { var c3 = 2.4; return 1 + c3 * Math.pow(x - 1, 3) + 1.4 * Math.pow(x - 1, 2); };
+    var root = new THREE.Group(), emblem = new THREE.Group(); root.add(emblem);
+
+    var amb = new THREE.AmbientLight(0xffffff, .5); scene.add(amb);
+    var key = new THREE.DirectionalLight(0xffffff, .6); key.position.set(7, 4, 8); key.target = coreObj; scene.add(key);
+    var rim = new THREE.DirectionalLight(0xffe2e2, .35); rim.position.set(-4, -3, -6); rim.target = coreObj; scene.add(rim);
+    var sheen = new THREE.PointLight(0xffffff, 0, 0); root.add(sheen);
+
+    var disc = new THREE.Shape(); disc.absarc(0, 0, 1, 0, Math.PI * 2, false);
+    LOGO.bands.forEach(function (pts) { var h = new THREE.Path(); h.moveTo(pts[0][0], pts[0][1]); for (var i = 1; i < pts.length; i++) h.lineTo(pts[i][0], pts[i][1]); h.closePath(); disc.holes.push(h); });
+    var dGeo = new THREE.ExtrudeGeometry(disc, { depth: .16, bevelEnabled: true, bevelThickness: .035, bevelSize: .022, bevelSegments: 4, curveSegments: 160 });
+    dGeo.translate(0, 0, -.08);
+    var dMat = new THREE.MeshPhysicalMaterial({ color: RED, metalness: .12, roughness: .34, clearcoat: .9, clearcoatRoughness: .2, transparent: true, opacity: 0, fog: false });
+    var discMesh = new THREE.Mesh(dGeo, dMat); emblem.add(discMesh);
+
+    var bands = LOGO.bands.map(function (pts, i) {
+      var cx = 0, cy = 0; pts.forEach(function (q) { cx += q[0]; cy += q[1]; }); cx /= pts.length; cy /= pts.length;
+      var sh = new THREE.Shape(); sh.moveTo(pts[0][0] - cx, pts[0][1] - cy); for (var k = 1; k < pts.length; k++) sh.lineTo(pts[k][0] - cx, pts[k][1] - cy); sh.closePath();
+      var g = new THREE.ExtrudeGeometry(sh, { depth: .12, bevelEnabled: true, bevelThickness: .022, bevelSize: .01, bevelSegments: 3 }); g.translate(0, 0, -.04);
+      var m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: .28, clearcoat: 1, clearcoatRoughness: .15, emissive: 0xffffff, emissiveIntensity: .25, transparent: true, opacity: 0, fog: false });
+      var grp = new THREE.Group(); grp.add(new THREE.Mesh(g, m)); grp.userData = { cx: cx, cy: cy }; emblem.add(grp); return grp;
+    });
+
+    var glowMat = new THREE.SpriteMaterial({ map: SPR, color: RED, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false });
+    var glow = new THREE.Sprite(glowMat); glow.scale.set(4.6, 4.6, 1); glow.position.z = -.6; root.add(glow);
+
+    function inPoly(x, y, pts) { var c = false; for (var i = 0, j = pts.length - 1; i < pts.length; j = i++) { var xi = pts[i][0], yi = pts[i][1], xj = pts[j][0], yj = pts[j][1]; if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) c = !c; } return c; }
+    var R1 = rng(17), NP = window.innerWidth < 760 ? 1000 : 1800;
+    var pS = new Float32Array(NP * 3), pE = new Float32Array(NP * 3), pP = new Float32Array(NP * 3), pC = new Float32Array(NP * 3), pD = new Float32Array(NP);
+    for (var n = 0; n < NP; n++) {
+      var x, y; do { x = R1() * 2 - 1; y = R1() * 2 - 1; } while (x * x + y * y > 1);
+      var c = LOGO.bands.some(function (b) { return inPoly(x, y, b); }) ? WHITE : RED;
+      pE[n * 3] = x; pE[n * 3 + 1] = y; pE[n * 3 + 2] = .13;
+      var th = R1() * Math.PI * 2, phi = Math.acos(2 * R1() - 1), rr = 3 + R1() * 3;
+      pS[n * 3] = Math.sin(phi) * Math.cos(th) * rr; pS[n * 3 + 1] = Math.sin(phi) * Math.sin(th) * rr * .7; pS[n * 3 + 2] = Math.cos(phi) * rr - .5;
+      pC[n * 3] = c.r; pC[n * 3 + 1] = c.g; pC[n * 3 + 2] = c.b;
+      pD[n] = .15 + R1() * .75 + (1 - Math.sqrt(x * x + y * y)) * .25;
+    }
+    var pGeo = new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.BufferAttribute(pP, 3)); pGeo.setAttribute('color', new THREE.BufferAttribute(pC, 3));
+    var pMat = new THREE.PointsMaterial({ size: .075, map: SPR, vertexColors: true, transparent: true, depthWrite: false, fog: false });
+    var parts = new THREE.Points(pGeo, pMat); emblem.add(parts);
+
+    function ringLine(r, color, op) {
+      var pts = []; for (var a = 0; a <= 256; a++) { var t = a / 256 * Math.PI * 2; pts.push(new THREE.Vector3(Math.cos(t) * r, Math.sin(t) * r, 0)); }
+      var l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0, depthWrite: false, fog: false }));
+      l.userData.op = op; return l;
+    }
+    var ringA = ringLine(1.62, 0xffffff, .45), ringB = ringLine(1.9, RED.getHex(), .8);
+    var rAG = new THREE.Group(), rBG = new THREE.Group(); rAG.add(ringA); rBG.add(ringB);
+    rAG.rotation.set(1.18, .2, .35); rBG.rotation.set(-1.02, -.25, -.6); root.add(rAG, rBG);
+    function orb(color, sc) { var o = new THREE.Sprite(new THREE.SpriteMaterial({ map: SPR, color: color, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })); o.scale.set(sc, sc, 1); return o; }
+    var orbA = orb(0xffffff, .2), orbB = orb(0xff4d5a, .24); ringA.add(orbA); ringB.add(orbB);
+
+    var SH = 420, sP = new Float32Array(SH * 3), sC = new Float32Array(SH * 3), ga = Math.PI * (3 - Math.sqrt(5)), R2 = rng(5);
+    for (var q = 0; q < SH; q++) {
+      var yy = 1 - q / (SH - 1) * 2, rad = Math.sqrt(1 - yy * yy), t2 = ga * q, k = 2.45 + R2() * .25;
+      sP[q * 3] = Math.cos(t2) * rad * k; sP[q * 3 + 1] = yy * k; sP[q * 3 + 2] = Math.sin(t2) * rad * k;
+      var cc = R2() < .55 ? RED : WHITE, bb = .5 + R2() * .5; sC[q * 3] = cc.r * bb; sC[q * 3 + 1] = cc.g * bb; sC[q * 3 + 2] = cc.b * bb;
+    }
+    var sGeo = new THREE.BufferGeometry(); sGeo.setAttribute('position', new THREE.BufferAttribute(sP, 3)); sGeo.setAttribute('color', new THREE.BufferAttribute(sC, 3));
+    var sMat = new THREE.PointsMaterial({ size: .05, map: SPR, vertexColors: true, transparent: true, opacity: 0, depthWrite: false, fog: false });
+    var shell = new THREE.Points(sGeo, sMat); root.add(shell);
+
+    function setOp(mat, o) { var tr = o < .999; if (mat.transparent !== tr) { mat.transparent = tr; mat.needsUpdate = true; } mat.opacity = o; }
+
+    function update(t, fade, mx, my) {
+      var i;
+      if (t < 3) {
+        for (i = 0; i < NP; i++) {
+          var p = eIO(seg(t, pD[i], pD[i] + 1.25)), sw = (1 - p) * 1.6, i3 = i * 3, sx = pS[i3], sy = pS[i3 + 1], cs = Math.cos(sw), sn = Math.sin(sw);
+          var rx = sx * cs - sy * sn, ry = sx * sn + sy * cs;
+          pP[i3] = rx + (pE[i3] - rx) * p; pP[i3 + 1] = ry + (pE[i3 + 1] - ry) * p; pP[i3 + 2] = pS[i3 + 2] + (pE[i3 + 2] - pS[i3 + 2]) * p;
+        }
+        pGeo.attributes.position.needsUpdate = true;
+      }
+      pMat.opacity = (1 - easeOut(seg(t, 1.9, 2.7))) * fade; parts.visible = pMat.opacity > .001;
+      var solid = easeOut(seg(t, 1.55, 2.45));
+      setOp(dMat, solid * fade); discMesh.scale.setScalar(.94 + .06 * solid);
+      glowMat.opacity = .2 * solid * fade * (1 + .12 * Math.sin(t * 1.8));
+      bands.forEach(function (g, j) {
+        var a = seg(t, 2.0 + j * .24, 3.15 + j * .24), e = eBack(a), o = easeOut(a), u = g.userData, dir = j % 2 ? -1 : 1;
+        g.position.set(u.cx * (1 + (1 - o) * .5), u.cy * (1 + (1 - o) * .5), (1 - e) * 1.8);
+        g.rotation.set((1 - e) * 1.25 * dir, (1 - e) * -.6 * dir, (1 - e) * .7); g.scale.setScalar(.7 + .3 * e);
+        setOp(g.children[0].material, o * fade);
+      });
+      var ra = eIO(seg(t, 2.9, 4.1)), rb = eIO(seg(t, 3.15, 4.4));
+      ringA.geometry.setDrawRange(0, Math.floor(257 * ra)); ringB.geometry.setDrawRange(0, Math.floor(257 * rb));
+      ringA.material.opacity = ringA.userData.op * Math.min(1, ra * 3) * fade; ringB.material.opacity = ringB.userData.op * Math.min(1, rb * 3) * fade;
+      var oa = t * .9, ob = -t * .7 + 2;
+      orbA.position.set(Math.cos(oa) * 1.62, Math.sin(oa) * 1.62, 0); orbB.position.set(Math.cos(ob) * 1.9, Math.sin(ob) * 1.9, 0);
+      orbA.material.opacity = seg(t, 3.9, 4.4) * fade; orbB.material.opacity = seg(t, 4.1, 4.6) * fade;
+      sMat.opacity = .55 * easeOut(seg(t, 3.2, 4.4)) * fade;
+      shell.rotation.y = t * .06; shell.rotation.x = Math.sin(t * .2) * .1;
+      rAG.rotation.z = .35 + t * .05; rBG.rotation.z = -.6 - t * .04;
+      var sweep = seg(t, 3.7, 5.1);
+      if (t < 5.1) { sheen.position.set(-4.2 + 8.4 * eIO(sweep), 1.4 - 1.2 * sweep, 2.2); sheen.intensity = 1.1 * Math.sin(sweep * Math.PI) * fade; }
+      else { var w = (t - 5.1) * .35; sheen.position.set(Math.sin(w) * 3.6, 1 + Math.cos(w * .7) * .6, 2.4); sheen.intensity = .3 * fade; }
+      var intro = easeOut(seg(t, 1.6, 2.9)), idle = seg(t, 4.2, 5.4), tt = Math.max(0, t - 4.2);
+      emblem.rotation.y = (1 - intro) * -.9 + idle * .3 * Math.sin(tt * .55) + mx * .4;
+      emblem.rotation.x = idle * .07 * Math.sin(tt * .42) - my * .28;
+      root.position.y = idle * .06 * Math.sin(tt * .9);
+    }
+    return { root: root, update: update };
+  }
+
   /* ======================================================================
      Background particle network + hero centrepiece
      ====================================================================== */
@@ -767,35 +883,10 @@
     var lines = new THREE.LineSegments(lGeo, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: .7, depthWrite: false, blending: THREE.AdditiveBlending }));
     scene.add(lines);
 
-    /* centrepiece */
+    /* centrepiece: Shafi Consultancy emblem */
     var core = new THREE.Group(); scene.add(core);
-    var outerMat = new THREE.LineBasicMaterial({ color: COL.cyan, transparent: true, opacity: .5 });
-    var outer = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(2.6, 1)), outerMat);
-    var innerMat = new THREE.LineBasicMaterial({ color: COL.purple, transparent: true, opacity: .9 });
-    var inner = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1.3, 0)), innerMat);
-    var nucleusMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .95 });
-    var nucleus = new THREE.Mesh(new THREE.IcosahedronGeometry(.32, 2), nucleusMat);
-    var glowMat = new THREE.SpriteMaterial({ map: sprite, color: COL.cyan, transparent: true, opacity: .5, blending: THREE.AdditiveBlending, depthWrite: false });
-    var glow = new THREE.Sprite(glowMat); glow.scale.set(4.6, 4.6, 1);
-    var SH = 360, shell = new Float32Array(SH * 3), ga = Math.PI * (3 - Math.sqrt(5));
-    for (var s = 0; s < SH; s++) {
-      var yy = 1 - (s / (SH - 1)) * 2, rr = Math.sqrt(1 - yy * yy), th = ga * s;
-      shell[s * 3] = Math.cos(th) * rr * 3.6; shell[s * 3 + 1] = yy * 3.6; shell[s * 3 + 2] = Math.sin(th) * rr * 3.6;
-    }
-    var shGeo = new THREE.BufferGeometry(); shGeo.setAttribute('position', new THREE.BufferAttribute(shell, 3));
-    var shellMat = new THREE.PointsMaterial({ size: .07, color: COL.emerald, map: sprite, transparent: true, opacity: .8, depthWrite: false, blending: THREE.AdditiveBlending });
-    var shellPts = new THREE.Points(shGeo, shellMat);
-    function ring(r, color, op) {
-      var pts = []; for (var a = 0; a <= 128; a++) { var t = a / 128 * Math.PI * 2; pts.push(new THREE.Vector3(Math.cos(t) * r, 0, Math.sin(t) * r)); }
-      return new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: op }));
-    }
-    var ring1 = ring(4.2, COL.cyan, .35), ring2 = ring(4.7, COL.purple, .25);
-    ring1.rotation.x = 1.15; ring2.rotation.x = -.9; ring2.rotation.z = .5;
-    var orb = new THREE.Sprite(new THREE.SpriteMaterial({ map: sprite, color: 0xffffff, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
-    orb.scale.set(.5, .5, 1); ring1.add(orb);
-    core.add(outer, inner, nucleus, glow, shellPts, ring1, ring2);
-    var fadeMats = [outerMat, innerMat, nucleusMat, glowMat, shellMat, ring1.material, ring2.material, orb.material];
-    var baseOp = fadeMats.map(function (m) { return m.opacity; });
+    var emb = buildEmblem(sprite, scene, core); emb.root.scale.setScalar(2.3); core.add(emb.root);
+    var coreDim = 1, embStart = performance.now(), emx = 0, emy = 0;
 
     var ndc = { x: 0, y: 0 }, mouseOn = false, mouseW = new THREE.Vector3(), tmp = new THREE.Vector3(), coreBase = new THREE.Vector3();
     window.addEventListener('pointermove', function (e) { ndc.x = e.clientX / window.innerWidth * 2 - 1; ndc.y = -(e.clientY / window.innerHeight) * 2 + 1; mouseOn = e.pointerType === 'mouse'; }, { passive: true });
@@ -805,8 +896,8 @@
       var w = window.innerWidth, h = window.innerHeight;
       renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
       var hh = Math.tan(camera.fov * Math.PI / 360) * camera.position.z, hw = hh * camera.aspect;
-      if (w >= 1024) { coreBase.set(hw * .5, hh * .12, 0); core.scale.setScalar(1); }
-      else { coreBase.set(hw * .35, hh * .35, -5); core.scale.setScalar(.85); }
+      if (w >= 1024) { coreBase.set(hw * .5, hh * .1, 0); core.scale.setScalar(1); coreDim = 1; }
+      else { var px = 2 * hh / h; coreBase.set(0, hh - 168 * px, 0); core.scale.setScalar(Math.min(.8, 76 * px / 2.3)); coreDim = .95; }
     }
     resize(); window.addEventListener('resize', resize);
 
@@ -859,12 +950,8 @@
       var sy = window.scrollY || 0, vh = window.innerHeight;
       var fade = clamp(1 - sy / (vh * 1.1), .12, 1);
       core.position.set(coreBase.x, coreBase.y + sy * .006, coreBase.z);
-      core.rotation.y = t * .18 + ndc.x * .35; core.rotation.x = Math.sin(t * .3) * .12 - ndc.y * .25;
-      outer.rotation.x = t * .05; inner.rotation.y = -t * .5; inner.rotation.z = t * .2;
-      shellPts.rotation.y = -t * .07; ring1.rotation.z = t * .25; ring2.rotation.y = t * .18;
-      var oa = t * 1.1; orb.position.set(Math.cos(oa) * 4.2, 0, Math.sin(oa) * 4.2);
-      var pulse = 1 + Math.sin(t * 2.2) * .08; nucleus.scale.setScalar(pulse); glow.scale.setScalar(4.6 * pulse);
-      for (var m = 0; m < fadeMats.length; m++) fadeMats[m].opacity = baseOp[m] * fade;
+      emx += (ndc.x - emx) * .06; emy += (ndc.y - emy) * .06;
+      emb.update(RM ? 6 : (performance.now() - embStart) / 1000, fade * coreDim, emx, emy);
 
       camera.position.x += (ndc.x * .7 - camera.position.x) * .03;
       camera.position.y += (ndc.y * .45 - camera.position.y) * .03;
