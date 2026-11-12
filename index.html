@@ -115,6 +115,32 @@
   .btn:active { transform: translateY(0) scale(.98); }
   .btn[disabled] { opacity: .55; cursor: progress; transform: none; }
 
+  /* about: glance list, milestones, to-be-confirmed marks */
+  .glance { margin: 0; display: grid; }
+  .glance > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 6px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .glance > div:first-child { border-top: 0; padding-top: 0; }
+  .glance dt { font: 500 10.5px/1.6 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding-top: 3px; }
+  .glance dd { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text); min-width: 0; }
+  .glance dd a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.35); }
+  .glance dd a:hover { border-bottom-color: var(--cyan); }
+  @media (max-width: 420px) { .glance > div { grid-template-columns: 1fr; gap: 2px; } }
+  .milestones { list-style: none; margin: 0; padding: 0; display: grid; }
+  .milestones li { position: relative; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 28px; padding: 20px 0 20px 28px; border-top: 1px solid var(--line); }
+  .milestones li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); }
+  .milestones li::after { content: ""; position: absolute; left: -4px; top: 28px; width: 9px; height: 9px; border-radius: 50%; background: var(--ink); border: 1px solid var(--dim); }
+  .milestones li.is-key::after { background: var(--purple); border-color: var(--purple); box-shadow: 0 0 12px var(--purple); }
+  .milestones li.is-key .ms-when { color: #fff; }
+  .ms-when { font: 500 14px 'JetBrains Mono', monospace; color: var(--muted); padding-top: 2px; }
+  .ms-body { display: grid; gap: 5px; min-width: 0; }
+  .ms-org { font: 500 10.5px/1.6 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .ms-title { margin: 0; font: 500 16px/1.4 'IBM Plex Sans', sans-serif; color: var(--text); }
+  .ms-text { font-size: 14px; line-height: 1.65; color: var(--muted); max-width: 64ch; }
+  @media (max-width: 640px) { .milestones li { grid-template-columns: 1fr; gap: 4px; } }
+  .tbc { border-left: 2px solid var(--purple); padding: 6px 0 6px 16px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+  .tbc b { display: block; font: 500 10.5px/1.6 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--text); margin-bottom: 2px; }
+  .tbc-inline { font-style: italic; color: var(--muted); border-bottom: 1px dashed rgba(168,85,247,.75); text-decoration: none; }
+  .tbc-inline::before { content: "To be supplied: "; font-style: normal; font: 500 10px 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); }
+
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
   .nav.scrolled { background: rgba(11,15,25,.72); border-bottom-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -135,17 +161,6 @@
   .chip:hover { color: var(--text); border-color: var(--line-2); }
   .chip[aria-pressed="true"] { color: #fff; border-color: var(--c, var(--cyan)); background: color-mix(in srgb, var(--c, var(--cyan)) 12%, transparent); }
   .chip .swatch { width: 10px; height: 2px; border-radius: 2px; background: var(--c, var(--cyan)); box-shadow: 0 0 8px var(--c, var(--cyan)); }
-
-  /* 3D cards */
-  .stage { position: relative; height: 470px; }
-  .stage canvas { width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; border-radius: 20px; }
-  .stage canvas.grabbing { cursor: grabbing; }
-  .stage canvas.pointing { cursor: pointer; }
-  .stage-hint { position: absolute; top: 18px; right: 20px; font: 500 11px 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); display: flex; gap: 6px; align-items: center; pointer-events: none; }
-  .stage-hint svg { width: 14px; height: 14px; }
-  .readout { position: absolute; left: 14px; right: 14px; bottom: 14px; padding: 14px 16px; border-radius: 14px; background: rgba(11,15,25,.62); border: 1px solid var(--line); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  .no-gl { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 14px; }
-  @media (max-width: 640px) { .stage { height: 420px; } }
 
   /* metrics */
   .metric-val { font-family: 'Sora', sans-serif; font-weight: 600; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
@@ -248,7 +263,7 @@
       <span class="brand-name font-display text-[14px] font-semibold tracking-[.22em]">SHAFI CHOWDHURY</span>
     </a>
     <nav aria-label="Main" class="hidden lg:flex items-center gap-7">
-      <a class="nav-link" href="#structures">Structures</a>
+      <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#analytics">Analytics</a>
       <a class="nav-link" href="#tlf">TLF engine</a>
       <a class="nav-link" href="#nonmem">NONMEM</a>
@@ -259,7 +274,7 @@
   </div>
   <div id="mobileNav" class="mobile-panel lg:hidden wrap pb-5">
     <nav aria-label="Mobile" class="glass p-3 grid">
-      <a class="nav-link !text-[16px] !py-3 px-3" href="#structures">Structures</a>
+      <a class="nav-link !text-[16px] !py-3 px-3" href="#about">About</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#analytics">Analytics</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#tlf">TLF engine</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#nonmem">NONMEM</a>
@@ -280,7 +295,7 @@
       <p class="h-display hero-in text-[clamp(1.35rem,2.6vw,2rem)] font-light leading-[1.25] text-white/90" style="--d:2">Bridging clinical rigour with <span class="grad-text font-normal">advanced computational analytics.</span></p>
       <p class="hero-in measure text-[17px] leading-[1.75] text-mute" style="--d:3">Approximately 33 years in the pharmaceutical industry. Since founding Shafi Consultancy in 2001, Shafi has led a specialist clinical programming company serving pharmaceutical sponsors and CROs, from CDISC-standard data and TLF reporting to analysis-ready PK/PD datasets for NONMEM.</p>
       <div class="hero-in flex flex-wrap gap-3" style="--d:4">
-        <a href="#structures" class="btn btn-primary">Explore the work <i data-lucide="arrow-down"></i></a>
+        <a href="#about" class="btn btn-primary">Explore the work <i data-lucide="arrow-down"></i></a>
         <a href="https://www.shaficonsultancy.com/" target="_blank" rel="noopener" class="btn btn-ghost">Visit Shafi Consultancy <i data-lucide="arrow-up-right"></i></a>
       </div>
     </div>
@@ -303,73 +318,87 @@
         <span class="inline-flex items-center gap-2"><span class="dot dot-em"></span>Statistics &amp; clean data</span>
         <span class="inline-flex items-center gap-2"><span class="dot dot-pu"></span>Advanced modelling</span>
       </p>
-      <a href="#structures" class="kicker no-underline hover:text-white transition-colors"><span class="scroll-cue inline-flex"><i data-lucide="chevrons-down" class="w-4 h-4"></i></span>Scroll</a>
+      <a href="#about" class="kicker no-underline hover:text-white transition-colors"><span class="scroll-cue inline-flex"><i data-lucide="chevrons-down" class="w-4 h-4"></i></span>Scroll</a>
     </div>
   </div>
 </section>
 
-<!-- ============================== 3D STRUCTURES ============================== -->
-<section id="structures" class="py-20 lg:py-28">
+<!-- ============================== ABOUT ============================== -->
+<section id="about" class="py-20 lg:py-28">
   <div class="wrap">
     <div class="reveal grid lg:grid-cols-12 gap-6 items-end mb-10">
       <div class="lg:col-span-7 grid gap-4">
-        <p class="kicker"><span class="dot dot-cy"></span>Clinical trials <span class="dot dot-pu ml-2"></span>Modelling</p>
-        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">The work, as structure</h2>
+        <p class="kicker"><span class="dot dot-cy"></span>Professional profile</p>
+        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">About Shafi Chowdhury</h2>
       </div>
-      <p class="lg:col-span-5 text-mute leading-relaxed">Two interactive models of the data Shafi's teams work with. Drag to rotate. Select a node or a point on the surface to read its values.</p>
+      <p class="lg:col-span-5 text-mute leading-relaxed">Approximately 33 years across pharmaceutical operations, clinical research and clinical statistical programming, and Founder of a specialist clinical programming company since 2001.</p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      <!-- Helix -->
-      <article class="glass hud reveal">
-        <div class="flex items-start justify-between gap-4 px-6 pt-6">
-          <div class="grid gap-1.5">
-            <h3 class="h-display text-[20px] font-semibold flex items-center gap-2.5"><i data-lucide="dna" class="w-5 h-5 text-cy"></i>Clinical trial connectivity</h3>
-            <p class="text-[14px] text-mute leading-relaxed max-w-[46ch]">SDTM collected data and ADaM analysis data as two linked strands. Each rung is a traceability link between them.</p>
-          </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <!-- biography -->
+      <article class="lg:col-span-7 glass hud reveal p-6 sm:p-8 grid gap-5 content-start min-w-0">
+        <p class="kicker !text-[10.5px]">Biography</p>
+        <h3 class="h-display text-[clamp(1.35rem,2.2vw,1.75rem)] font-semibold leading-[1.2]">Pharmaceutical industry professional, entrepreneur and Managing Director</h3>
+        <div class="grid gap-4 text-[15.5px] leading-[1.75] text-mute max-w-[64ch]">
+          <p>Shafi Chowdhury has spent approximately 33 years in the pharmaceutical industry, in roles spanning pharmaceutical operations, clinical research and clinical statistical programming. His professional background lies in statistical programming for clinical trials: the work that turns clinical data into the analyses and reports on which development decisions depend.</p>
+          <p>In 2001 he founded Shafi Consultancy Ltd., a specialist clinical programming company that works with pharmaceutical companies and contract research organisations. As Founder and Managing Director, he has combined technical understanding with the practical demands of running a business, from building teams to maintaining international client relationships.</p>
+          <p>Throughout his career, Shafi has taken a particular interest in quality, in programming innovation and in developing the people who do this work.</p>
+          <p>Today he leads Shafi Consultancy Ltd. as Founder and Managing Director, responsible for the company's direction, its client relationships and the development of its people.</p>
         </div>
-        <div class="stage" id="helixStage">
-          <canvas id="helix" tabindex="0" aria-label="Interactive 3D double helix. Cyan nodes are SDTM domains, green nodes are ADaM datasets, purple rungs are traceability links. Use arrow keys to rotate and Enter to step through nodes."></canvas>
-          <span class="stage-hint"><i data-lucide="move-3d"></i>Drag · Select</span>
-          <div class="readout" aria-live="polite">
-            <div class="flex items-center justify-between gap-3">
-              <p class="font-mono text-[11px] tracking-[.12em] uppercase text-dim" id="hxLayer">SDTM · collected data</p>
-              <p class="font-mono text-[11px] text-dim" id="hxIndex">Node 2 of 52</p>
-            </div>
-            <p class="mt-1.5 flex items-baseline gap-3 flex-wrap"><span class="font-mono text-[22px] text-cy" id="hxCode">AE</span><span class="text-[15px] text-white" id="hxName">Adverse Events</span></p>
-            <p class="mt-1 text-[13px] text-mute" id="hxTrace">Traces to ADAE through STUDYID and USUBJID.</p>
-          </div>
-        </div>
+        <div class="tbc"><b>Still to be added</b>Earlier employers and roles, professional memberships, and any personal background Shafi would like to include.</div>
       </article>
 
-      <!-- PopPK surface -->
-      <article class="glass hud reveal">
-        <div class="flex items-start justify-between gap-4 px-6 pt-6">
-          <div class="grid gap-1.5">
-            <h3 class="h-display text-[20px] font-semibold flex items-center gap-2.5"><i data-lucide="layers" class="w-5 h-5 text-pu"></i>PopPK clearance surface</h3>
-            <p class="text-[14px] text-mute leading-relaxed max-w-[46ch]">Simulated one-compartment oral model: plasma concentration across time and clearance, at three volume-of-distribution percentiles.</p>
+      <!-- at a glance -->
+      <aside class="lg:col-span-5 glass reveal p-6 sm:p-7 grid gap-5 content-start min-w-0 self-start">
+        <div class="flex items-center justify-between gap-3">
+          <p class="kicker !text-[10.5px]"><span class="dot dot-em"></span>At a glance</p>
+          <span class="font-mono text-[11px] text-dim">ADSL · 1 obs.</span>
+        </div>
+        <dl class="glance">
+          <div><dt>Role</dt><dd>Founder &amp; Managing Director</dd></div>
+          <div><dt>Company</dt><dd><a href="https://www.shaficonsultancy.com/" target="_blank" rel="noopener">Shafi Consultancy Ltd.</a>, founded 2001</dd></div>
+          <div><dt>Industry</dt><dd>Pharmaceutical industry, approximately 33 years</dd></div>
+          <div><dt>Field</dt><dd>Clinical statistical programming, clinical research, CRO services</dd></div>
+          <div><dt>Education</dt><dd>M.Sc. Statistics, Sheffield Hallam University, 1998–2000<br>B.Sc. (Hons.) Mathematics, De Montfort University, 1991–1995</dd></div>
+          <div><dt>Memberships</dt><dd><span class="tbc-inline">professional memberships</span></dd></div>
+        </dl>
+      </aside>
+
+      <!-- career milestones -->
+      <article class="lg:col-span-12 glass reveal p-6 sm:p-8 grid gap-6 min-w-0">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div class="grid gap-3">
+            <p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Leadership journey</p>
+            <h3 class="h-display text-[clamp(1.35rem,2.2vw,1.75rem)] font-semibold">Career milestones</h3>
           </div>
+          <p class="text-[13px] text-dim max-w-[44ch]">Entries with a dashed underline are awaiting confirmed details and will be updated.</p>
         </div>
-        <div class="px-6 pt-4 flex flex-wrap gap-2" role="group" aria-label="Surface layers">
-          <button class="chip" style="--c:#22D3EE" aria-pressed="true" data-layer="2"><span class="swatch"></span>P5 · V 26 L</button>
-          <button class="chip" style="--c:#A855F7" aria-pressed="true" data-layer="1"><span class="swatch"></span>Median · V 38 L</button>
-          <button class="chip" style="--c:#34D399" aria-pressed="true" data-layer="0"><span class="swatch"></span>P95 · V 55 L</button>
-        </div>
-        <div class="stage" id="surfStage">
-          <canvas id="surface" tabindex="0" aria-label="Interactive 3D concentration surface over time and clearance, in three layers. Use arrow keys to rotate."></canvas>
-          <span class="stage-hint"><i data-lucide="mouse-pointer-click"></i>Hover · Drag</span>
-          <div class="readout" aria-live="polite">
-            <div class="flex items-center justify-between gap-3">
-              <p class="font-mono text-[11px] tracking-[.12em] uppercase text-dim" id="sfLayer">Median layer · V = 38 L</p>
-              <p class="font-mono text-[11px] text-dim">Dose 400 mg · KA 1.1 h⁻¹</p>
-            </div>
-            <div class="mt-2 grid grid-cols-3 gap-3 font-mono">
-              <div><p class="text-[11px] text-dim">TIME</p><p class="text-[18px] text-white tabular-nums" id="sfT">2.3 h</p></div>
-              <div><p class="text-[11px] text-dim">CL</p><p class="text-[18px] text-white tabular-nums" id="sfCL">4.2 L/h</p></div>
-              <div><p class="text-[11px] text-dim">CONC.</p><p class="text-[18px] text-pu tabular-nums" id="sfC">—</p></div>
-            </div>
-          </div>
-        </div>
+        <ol class="milestones">
+          <li>
+            <p class="ms-when">Career start</p>
+            <div class="ms-body"><p class="ms-org"><span class="tbc-inline">employer to be confirmed</span></p><h4 class="ms-title"><span class="tbc-inline">first role in the pharmaceutical industry: title to be confirmed</span></h4><p class="ms-text"><span class="tbc-inline">Start of a career in the pharmaceutical industry that now spans approximately 33 years. Exact start date, role and responsibilities to be supplied.</span></p></div>
+          </li>
+          <li>
+            <p class="ms-when">Earlier roles</p>
+            <div class="ms-body"><p class="ms-org"><span class="tbc-inline">employer(s) to be confirmed</span></p><h4 class="ms-title"><span class="tbc-inline">roles in pharmaceutical operations and clinical research: details to be confirmed</span></h4><p class="ms-text"><span class="tbc-inline">Roles, dates and areas of responsibility before 2001 to be supplied.</span></p></div>
+          </li>
+          <li>
+            <p class="ms-when">Before 2001</p>
+            <div class="ms-body"><p class="ms-org"><span class="tbc-inline">employer(s) to be confirmed</span></p><h4 class="ms-title"><span class="tbc-inline">clinical statistical programming: role details to be confirmed</span></h4><p class="ms-text"><span class="tbc-inline">Hands-on experience in clinical statistical programming. Projects, therapeutic areas and roles to be supplied.</span></p></div>
+          </li>
+          <li class="is-key">
+            <p class="ms-when">2001</p>
+            <div class="ms-body"><p class="ms-org">Shafi Consultancy Ltd.</p><h4 class="ms-title">Founder &amp; Managing Director</h4><p class="ms-text">Founds Shafi Consultancy Ltd., a specialist clinical programming company providing statistical programming services to pharmaceutical companies and contract research organisations.</p></div>
+          </li>
+          <li>
+            <p class="ms-when">Since 2001</p>
+            <div class="ms-body"><p class="ms-org">Shafi Consultancy Ltd.</p><h4 class="ms-title"><span class="tbc-inline">company milestones: to be confirmed</span></h4><p class="ms-text"><span class="tbc-inline">Key milestones such as new offices, service lines or long-term client relationships to be supplied.</span></p></div>
+          </li>
+          <li>
+            <p class="ms-when">Today</p>
+            <div class="ms-body"><p class="ms-org">Shafi Consultancy Ltd.</p><h4 class="ms-title">Founder &amp; Managing Director</h4><p class="ms-text">Leads Shafi Consultancy Ltd., overseeing its clinical programming services, client relationships and the development of its people.</p></div>
+          </li>
+        </ol>
       </article>
     </div>
   </div>
@@ -651,7 +680,7 @@
         links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['structures', 'analytics', 'tlf', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
+    ['about', 'analytics', 'tlf', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
   }
 
   if (!RM && 'IntersectionObserver' in window) {
@@ -719,18 +748,6 @@
     g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
     return new THREE.CanvasTexture(c);
   }
-  function makeLabel(text, color) {
-    var c = document.createElement('canvas'), g = c.getContext('2d'), fs = 40;
-    g.font = '500 ' + fs + 'px "JetBrains Mono", monospace';
-    c.width = Math.ceil(g.measureText(text).width) + 16; c.height = fs + 16;
-    g.font = '500 ' + fs + 'px "JetBrains Mono", monospace';
-    g.fillStyle = color || '#9AA6BC'; g.textBaseline = 'middle'; g.fillText(text, 8, c.height / 2);
-    var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
-    s.scale.set(c.width / c.height * .36, .36, 1);
-    return s;
-  }
-
-
   /* ======================================================================
      Shafi Consultancy emblem — traced from the company logo, extruded in 3D.
      Timeline: particles assemble (0–2.4 s), disc solidifies, bands sweep in,
@@ -967,277 +984,7 @@
     });
   }
 
-  /* ======================================================================
-     Interactive viewer (drag rotation with inertia, picking, visibility)
-     ====================================================================== */
-  function makeViewer(canvas, o) {
-    var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); renderer.setClearColor(0x000000, 0);
-    var scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(o.fov || 40, 1, .1, 100);
-    camera.position.copy(o.cam); camera.lookAt(o.look || new THREE.Vector3());
-    var pivot = new THREE.Group(); scene.add(pivot);
-    var st = { rx: o.rx || 0, ry: o.ry || 0, vx: 0, vy: 0, drag: false, last: -1e9 };
-    var ray = new THREE.Raycaster(), v2 = new THREE.Vector2(), lastX = 0, lastY = 0, moved = 0;
-    var running = false, raf = 0, visible = false;
-
-    function pick(e) {
-      var r = canvas.getBoundingClientRect();
-      v2.x = ((e.clientX - r.left) / r.width) * 2 - 1; v2.y = -((e.clientY - r.top) / r.height) * 2 + 1;
-      ray.setFromCamera(v2, camera);
-      var hits = ray.intersectObjects(o.pickables ? o.pickables() : [], false);
-      return hits.length ? hits[0] : null;
-    }
-    canvas.addEventListener('pointerdown', function (e) {
-      st.drag = true; moved = 0; lastX = e.clientX; lastY = e.clientY;
-      try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
-      canvas.classList.add('grabbing'); kick();
-    });
-    canvas.addEventListener('pointermove', function (e) {
-      if (st.drag) {
-        var dx = e.clientX - lastX, dy = e.clientY - lastY; lastX = e.clientX; lastY = e.clientY;
-        moved += Math.abs(dx) + Math.abs(dy);
-        st.vy = dx * .008; st.vx = dy * .006; st.ry += st.vy; st.rx += st.vx; st.last = performance.now();
-      } else if (o.onHover) {
-        var h = pick(e); canvas.classList.toggle('pointing', !!h); o.onHover(h);
-      }
-      kick();
-    });
-    function end(e) {
-      if (!st.drag) return; st.drag = false; canvas.classList.remove('grabbing');
-      if (moved < 6 && o.onPick) o.onPick(pick(e));
-      st.last = performance.now(); kick();
-    }
-    canvas.addEventListener('pointerup', end);
-    canvas.addEventListener('pointercancel', function () { st.drag = false; canvas.classList.remove('grabbing'); });
-    canvas.addEventListener('pointerleave', function () { if (!st.drag && o.onHover) { canvas.classList.remove('pointing'); o.onHover(null); kick(); } });
-    canvas.addEventListener('keydown', function (e) {
-      var k = e.key;
-      if (k === 'ArrowLeft') st.ry -= .15; else if (k === 'ArrowRight') st.ry += .15;
-      else if (k === 'ArrowUp') st.rx -= .1; else if (k === 'ArrowDown') st.rx += .1;
-      else if ((k === 'Enter' || k === ' ') && o.onKey) o.onKey();
-      else return;
-      e.preventDefault(); st.last = performance.now(); kick();
-    });
-
-    function resize() {
-      var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
-      renderer.setSize(w, h, false); camera.aspect = w / h;
-      if (o.fit) o.fit(camera, w / h);
-      camera.updateProjectionMatrix(); kick();
-    }
-    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener('resize', resize);
-    resize();
-
-    function render(now) {
-      if (!st.drag) {
-        st.ry += st.vy; st.rx += st.vx; st.vy *= .93; st.vx *= .93;
-        if (!RM && now - st.last > 2600) st.ry += o.auto || .003;
-      }
-      st.rx = clamp(st.rx, o.minX != null ? o.minX : -1.1, o.maxX != null ? o.maxX : 1.1);
-      pivot.rotation.set(st.rx, st.ry, 0);
-      if (o.onFrame) o.onFrame(now * .001);
-      renderer.render(scene, camera);
-    }
-    function loop(now) { render(now); if (running) raf = requestAnimationFrame(loop); }
-    function start() { if (running || RM || document.hidden || !visible) return; running = true; raf = requestAnimationFrame(loop); }
-    function stop() { running = false; cancelAnimationFrame(raf); }
-    function kick() { if (!running) requestAnimationFrame(render); }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) { start(); kick(); } else stop(); }, { rootMargin: '120px' }).observe(canvas);
-    } else { visible = true; start(); }
-    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
-    return { scene: scene, camera: camera, pivot: pivot, kick: kick, st: st, o: o };
-  }
-
-  /* ======================================================================
-     3D artifact 1 — SDTM / ADaM traceability helix
-     ====================================================================== */
-  function initHelix() {
-    var SD = [['DM', 'Demographics'], ['AE', 'Adverse Events'], ['LB', 'Laboratory Test Results'], ['VS', 'Vital Signs'], ['EX', 'Exposure'], ['CM', 'Concomitant Medications'], ['MH', 'Medical History'], ['PC', 'Pharmacokinetic Concentrations']];
-    var AD = [['ADSL', 'Subject-Level Analysis Dataset'], ['ADAE', 'Adverse Event Analysis Dataset'], ['ADLB', 'Laboratory Analysis Dataset'], ['ADVS', 'Vital Signs Analysis Dataset'], ['ADEX', 'Exposure Analysis Dataset'], ['ADCM', 'Concomitant Medication Analysis Dataset'], ['ADMH', 'Medical History Analysis Dataset'], ['ADPC', 'PK Concentration Analysis Dataset']];
-    var canvas = document.getElementById('helix');
-    var nodes = [], selected = null, hovered = null;
-    var v = makeViewer(canvas, {
-      cam: new THREE.Vector3(0, -2.2, 19), look: new THREE.Vector3(0, -2.2, 0), fov: 38, rx: .18, auto: .004,
-      pickables: function () { return nodes; },
-      onPick: function (h) { if (h) select(h.object); },
-      onHover: function (h) { hovered = h ? h.object : null; },
-      onKey: function () { select(nodes[(nodes.indexOf(selected) + 1) % nodes.length]); },
-      fit: function (cam, asp) { cam.position.z = asp < .9 ? 24 : 19; }
-    });
-    v.scene.add(new THREE.AmbientLight(0xffffff, .45));
-    var pl = new THREE.PointLight(0xBFF4FF, 1.3, 50); pl.position.set(6, 6, 9); v.scene.add(pl);
-    var sprite = makeSprite();
-    var NPS = 26, TURNS = 2.6, RAD = 2, H = 9.4, geo = new THREE.SphereGeometry(.15, 20, 14);
-    var strandPts = [[], []];
-    for (var s = 0; s < 2; s++) {
-      for (var i = 0; i < NPS; i++) {
-        var f = i / (NPS - 1), th = f * TURNS * Math.PI * 2 + s * Math.PI, c = s ? COL.emerald : COL.cyan;
-        var m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: c, emissive: c, emissiveIntensity: .55, roughness: .35, metalness: .1 }));
-        m.position.set(Math.cos(th) * RAD, (f - .5) * H, Math.sin(th) * RAD);
-        var d = (s ? AD : SD)[i % 8];
-        m.userData = { s: s, i: i, code: d[0], name: d[1], k: i % 8 };
-        var halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: sprite, color: c, transparent: true, opacity: .55, blending: THREE.AdditiveBlending, depthWrite: false }));
-        halo.scale.set(.75, .75, 1); m.add(halo); m.userData.halo = halo;
-        v.pivot.add(m); nodes.push(m);
-      }
-      var pts = [];
-      for (var k = 0; k <= 220; k++) { var ff = k / 220, tt = ff * TURNS * Math.PI * 2 + s * Math.PI; pts.push(new THREE.Vector3(Math.cos(tt) * RAD, (ff - .5) * H, Math.sin(tt) * RAD)); }
-      strandPts[s] = pts;
-      v.pivot.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 260, .035, 6, false),
-        new THREE.MeshBasicMaterial({ color: s ? COL.emerald : COL.cyan, transparent: true, opacity: .45 })));
-    }
-    /* rungs */
-    var rp = [];
-    for (var r = 0; r < NPS; r++) { var A = nodes[r].position, B = nodes[NPS + r].position; rp.push(A.x, A.y, A.z, B.x, B.y, B.z); }
-    var rg = new THREE.BufferGeometry(); rg.setAttribute('position', new THREE.Float32BufferAttribute(rp, 3));
-    v.pivot.add(new THREE.LineSegments(rg, new THREE.LineBasicMaterial({ color: COL.purple, transparent: true, opacity: .45 })));
-    /* graph cross-links (same domain on adjacent turns) */
-    var xp = [];
-    for (var q = 0; q < NPS * 2; q++) { var n2 = q + 8; if (n2 < NPS * 2 && Math.floor(q / NPS) === Math.floor(n2 / NPS)) { var P = nodes[q].position, Q = nodes[n2].position; xp.push(P.x, P.y, P.z, Q.x, Q.y, Q.z); } }
-    var xg = new THREE.BufferGeometry(); xg.setAttribute('position', new THREE.Float32BufferAttribute(xp, 3));
-    v.pivot.add(new THREE.LineSegments(xg, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: .07 })));
-    /* highlight link */
-    var hlGeo = new THREE.BufferGeometry(); hlGeo.setAttribute('position', new THREE.Float32BufferAttribute([0, 0, 0, 0, 0, 0], 3));
-    var hl = new THREE.Line(hlGeo, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: .95 }));
-    v.pivot.add(hl);
-    /* data pulses along rungs */
-    var pulses = [];
-    for (var p = 0; p < 12; p++) {
-      var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: sprite, color: COL.purple, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
-      sp.scale.set(.42, .42, 1); v.pivot.add(sp);
-      pulses.push({ s: sp, r: (p * 7) % NPS, t: p / 12, sp: .25 + (p % 4) * .06 });
-    }
-    var codeEl = document.getElementById('hxCode'), nameEl = document.getElementById('hxName'), layerEl = document.getElementById('hxLayer'), traceEl = document.getElementById('hxTrace'), idxEl = document.getElementById('hxIndex');
-    function select(m) {
-      selected = m;
-      var u = m.userData, partner = nodes[(u.s ? 0 : NPS) + u.i];
-      var arr = hlGeo.attributes.position.array, A = m.position, B = partner.position;
-      arr[0] = A.x; arr[1] = A.y; arr[2] = A.z; arr[3] = B.x; arr[4] = B.y; arr[5] = B.z; hlGeo.attributes.position.needsUpdate = true;
-      codeEl.textContent = u.code; nameEl.textContent = u.name;
-      codeEl.style.color = u.s ? HEX.emerald : HEX.cyan;
-      layerEl.textContent = u.s ? 'ADaM · analysis data' : 'SDTM · collected data';
-      idxEl.textContent = 'Node ' + (nodes.indexOf(m) + 1) + ' of ' + nodes.length;
-      traceEl.textContent = u.s
-        ? (u.code === 'ADSL' ? 'Derived from DM and other SDTM domains; supplies subject-level variables to every ADaM dataset.' : 'Derived from ' + SD[u.k][0] + ' and ADSL, keyed on STUDYID and USUBJID.')
-        : 'Traces to ' + AD[u.k][0] + ' through STUDYID and USUBJID.';
-      v.kick();
-    }
-    var origFrame = function (t) {
-      for (var i = 0; i < nodes.length; i++) {
-        var m = nodes[i], on = m === selected || (selected && m === nodes[(selected.userData.s ? 0 : NPS) + selected.userData.i]);
-        var target = on ? 1.9 : (m === hovered ? 1.4 : 1);
-        m.scale.setScalar(m.scale.x + (target - m.scale.x) * .2);
-        m.material.emissiveIntensity = on ? 1.3 : .55;
-        m.userData.halo.material.opacity = on ? .95 : .5;
-      }
-      for (var j = 0; j < pulses.length; j++) {
-        var pu = pulses[j]; pu.t += pu.sp * .016; if (pu.t > 1) { pu.t = 0; pu.r = (pu.r + 5) % NPS; }
-        var A = nodes[pu.r].position, B = nodes[NPS + pu.r].position;
-        pu.s.position.lerpVectors(A, B, pu.t); pu.s.material.opacity = Math.sin(pu.t * Math.PI);
-      }
-      v.pivot.position.y = Math.sin(t * .8) * .12;
-    };
-    v.o.onFrame = origFrame;
-    select(nodes[1]);
-  }
-
-  /* ======================================================================
-     3D artifact 2 — layered PopPK concentration surface
-     ====================================================================== */
-  function initSurface() {
-    var canvas = document.getElementById('surface');
-    var DOSE = 400, KA = 1.1, TMAX = 24, CLMIN = 1.5, CLMAX = 9, W = 9, Dp = 6;
-    var layers = [
-      { V: 55, color: COL.emerald, hex: HEX.emerald, off: -1.5, label: 'P95 layer · V = 55 L' },
-      { V: 38, color: COL.purple, hex: HEX.purple, off: 0, label: 'Median layer · V = 38 L' },
-      { V: 26, color: COL.cyan, hex: HEX.cyan, off: 1.5, label: 'P5 layer · V = 26 L' }
-    ];
-    var cmax = 0;
-    layers.forEach(function (L) { for (var t = 0; t <= TMAX; t += .25) { var c = conc1(t, DOSE, CLMIN, L.V, KA); if (c > cmax) cmax = c; } });
-    var HS = 2.3, meshes = [], marker;
-    var v = makeViewer(canvas, {
-      cam: new THREE.Vector3(0, 6.2, 12.8), look: new THREE.Vector3(0, .2, 0), fov: 36, rx: 0, ry: -.5, auto: .0022, minX: -.35, maxX: .55,
-      pickables: function () { return meshes.filter(function (m) { return m.visible; }); },
-      onHover: function (h) { if (h) show(h); },
-      onPick: function (h) { if (h) show(h); },
-      fit: function (cam, asp) { var z = asp < .9 ? 19 : 14.6; cam.position.set(0, z * .46, z); cam.lookAt(0, -.9, 0); }
-    });
-    var ivory = new THREE.Color(0x0E1424);
-    layers.forEach(function (L, li) {
-      var g = new THREE.PlaneGeometry(W, Dp, 60, 40); g.rotateX(-Math.PI / 2);
-      var p = g.attributes.position, colors = new Float32Array(p.count * 3), lc = new THREE.Color(L.color), tc = new THREE.Color();
-      for (var i = 0; i < p.count; i++) {
-        var t = (p.getX(i) + W / 2) / W * TMAX, CL = CLMIN + (p.getZ(i) + Dp / 2) / Dp * (CLMAX - CLMIN);
-        var c = conc1(t, DOSE, CL, L.V, KA) / cmax;
-        p.setY(i, L.off + c * HS);
-        tc.copy(ivory).lerp(lc, .25 + c * .75); colors[i * 3] = tc.r; colors[i * 3 + 1] = tc.g; colors[i * 3 + 2] = tc.b;
-      }
-      g.setAttribute('color', new THREE.BufferAttribute(colors, 3)); g.computeVertexNormals();
-      var mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: .32, side: THREE.DoubleSide, depthWrite: false }));
-      mesh.userData = L;
-      var wg = new THREE.PlaneGeometry(W, Dp, 30, 20); wg.rotateX(-Math.PI / 2);
-      var wp = wg.attributes.position;
-      for (var j = 0; j < wp.count; j++) {
-        var t2 = (wp.getX(j) + W / 2) / W * TMAX, CL2 = CLMIN + (wp.getZ(j) + Dp / 2) / Dp * (CLMAX - CLMIN);
-        wp.setY(j, L.off + conc1(t2, DOSE, CL2, L.V, KA) / cmax * HS + .002);
-      }
-      var wire = new THREE.LineSegments(new THREE.WireframeGeometry(wg), new THREE.LineBasicMaterial({ color: L.color, transparent: true, opacity: li === 1 ? .55 : .35, depthWrite: false }));
-      /* typical-subject curve (CL = 4.2) */
-      var cp = [], zc = ((4.2 - CLMIN) / (CLMAX - CLMIN)) * Dp - Dp / 2;
-      for (var k = 0; k <= 120; k++) { var tt = k / 120 * TMAX; cp.push(new THREE.Vector3(tt / TMAX * W - W / 2, L.off + conc1(tt, DOSE, 4.2, L.V, KA) / cmax * HS + .01, zc)); }
-      var curve = new THREE.Line(new THREE.BufferGeometry().setFromPoints(cp), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: .85 }));
-      var grp = new THREE.Group(); grp.add(mesh, wire, curve); grp.userData.base = L.off;
-      L.group = grp; v.pivot.add(grp); meshes.push(mesh);
-    });
-    /* floor grid + axis labels */
-    var grid = new THREE.GridHelper(10, 20, 0x2A3550, 0x1A2236); grid.position.y = -1.9;
-    grid.material.transparent = true; grid.material.opacity = .6; v.pivot.add(grid);
-    var lt = makeLabel('TIME (h) →'); lt.position.set(0, -1.9, Dp / 2 + .8); v.pivot.add(lt);
-    var lcl = makeLabel('CLEARANCE (L/h) →'); lcl.position.set(W / 2 + .4, -1.9, -1.2); v.pivot.add(lcl);
-    var lc = makeLabel('CONC. ↑', '#C4B5FD'); lc.position.set(-W / 2 - .7, 1.2, -Dp / 2); v.pivot.add(lc);
-    marker = new THREE.Sprite(new THREE.SpriteMaterial({ map: makeSprite(), color: 0xffffff, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false }));
-    marker.scale.set(.6, .6, 1); marker.visible = false; v.pivot.add(marker);
-
-    var tEl = document.getElementById('sfT'), clEl = document.getElementById('sfCL'), cEl = document.getElementById('sfC'), lEl = document.getElementById('sfLayer');
-    var local = new THREE.Vector3();
-    function readout(L, t, CL) {
-      lEl.textContent = L.label; tEl.textContent = t.toFixed(1) + ' h'; clEl.textContent = CL.toFixed(1) + ' L/h';
-      cEl.textContent = conc1(t, DOSE, CL, L.V, KA).toFixed(2) + ' mg/L'; cEl.style.color = L.hex;
-    }
-    function show(h) {
-      var L = h.object.userData;
-      local.copy(h.point); v.pivot.worldToLocal(local);
-      var t = clamp((local.x + W / 2) / W * TMAX, 0, TMAX), CL = clamp(CLMIN + (local.z + Dp / 2) / Dp * (CLMAX - CLMIN), CLMIN, CLMAX);
-      marker.position.copy(local); marker.visible = true; marker.material.color.set(L.color);
-      readout(L, t, CL);
-    }
-    readout(layers[1], 2.3, 4.2);
-
-    [].forEach.call(document.querySelectorAll('[data-layer]'), function (b) {
-      b.addEventListener('click', function () {
-        var L = layers[+b.getAttribute('data-layer')], on = b.getAttribute('aria-pressed') !== 'true';
-        b.setAttribute('aria-pressed', String(on)); L.group.visible = on;
-        if (!on && marker.visible) marker.visible = false;
-        v.kick();
-      });
-    });
-    v.o.onFrame = function (t) {
-      layers.forEach(function (L, i) { L.group.position.y = Math.sin(t * .9 + i * 1.7) * .08; });
-    };
-  }
-
-  if (hasThree) {
-    try { initBackground(); } catch (e) { console.warn('Background unavailable', e); }
-    try { initHelix(); } catch (e) { noGL('helixStage'); console.warn(e); }
-    try { initSurface(); } catch (e) { noGL('surfStage'); console.warn(e); }
-  } else { noGL('helixStage'); noGL('surfStage'); }
-  function noGL(id) {
-    var st = document.getElementById(id); if (!st) return;
-    var d = document.createElement('div'); d.className = 'no-gl';
-    d.textContent = 'This 3D view needs WebGL, which is not available in this browser.';
-    st.appendChild(d);
-  }
+  if (hasThree) { try { initBackground(); } catch (e) { console.warn('Background unavailable', e); } }
 
   /* ======================================================================
      Dashboard — Kaplan–Meier and multi-dose response
