@@ -159,6 +159,20 @@
   .xrow--plain { grid-template-columns: minmax(0, 1fr); }
   .ms-text .tbc-inline { font-size: 14px; }
 
+  /* insights list */
+  .alist { list-style: none; margin: 0; padding: 0; display: grid; }
+  .arow { display: grid; gap: 6px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .arow:first-child { border-top: 0; padding-top: 0; }
+  .arow__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .arow__cat { font: 500 10.5px/1 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--purple); }
+  .status { font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border: 1px dashed rgba(168,85,247,.6); border-radius: 999px; padding: 4px 8px; }
+  .arow__title { margin: 0; font: 600 17px/1.4 'Sora', sans-serif; letter-spacing: -.01em; color: var(--text); }
+  .arow__text { font-size: 14px; line-height: 1.65; color: var(--muted); max-width: 70ch; }
+  .arow__date { font: 11.5px 'JetBrains Mono', monospace; color: var(--dim); }
+  .filter { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; font: 500 12.5px/1 'IBM Plex Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all .25s var(--ease-out); }
+  .filter:hover { color: var(--text); border-color: var(--line-2); }
+  .filter[aria-pressed="true"] { color: #fff; border-color: var(--purple); background: rgba(168,85,247,.14); }
+
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
   .nav.scrolled { background: rgba(11,15,25,.72); border-bottom-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -192,29 +206,6 @@
   .risk { width: 100%; border-collapse: collapse; font: 12px 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
   .risk th, .risk td { padding: 6px 4px; text-align: right; color: var(--muted); border-top: 1px solid var(--line); }
   .risk th:first-child, .risk td:first-child { text-align: left; color: var(--text); }
-
-  /* NONMEM code */
-  .code { counter-reset: ln; font: 12.75px/1.75 'JetBrains Mono', monospace; overflow-x: auto; padding: 18px 0; margin: 0; tab-size: 2; }
-  .code .ln { display: block; padding: 0 20px 0 0; white-space: pre; }
-  .code .ln::before { counter-increment: ln; content: counter(ln); display: inline-block; width: 44px; padding-right: 16px; text-align: right; color: #3A4560; user-select: none; }
-  .code .ln:hover { background: rgba(255,255,255,.03); }
-  .k-rec { color: var(--purple); font-weight: 500; }
-  .k-par { color: var(--cyan); }
-  .k-fn { color: #fff; font-weight: 500; }
-  .k-num { color: var(--emerald); }
-  .k-opt { color: #C4B5FD; }
-  .k-com { color: #56637D; font-style: italic; }
-  .console { font: 12px/1.7 'JetBrains Mono', monospace; color: var(--muted); min-height: 130px; max-height: 190px; overflow: auto; padding: 14px 18px; border-top: 1px solid var(--line); background: rgba(0,0,0,.25); border-radius: 0 0 20px 20px; }
-  .console .ok { color: var(--emerald); }
-  .console .hd { color: var(--purple); }
-  .console .ln-in { animation: lnIn .35s var(--ease-out) both; }
-  @keyframes lnIn { from { opacity: 0; transform: translateX(-6px); } }
-  .caret::after { content: "▍"; color: var(--cyan); animation: blink 1s steps(2) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-  .est td, .est th { padding: 7px 0; border-top: 1px solid var(--line); font: 12px 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
-  .est th { font-weight: 500; color: var(--dim); text-align: left; }
-  .est td { color: var(--text); text-align: right; }
-  .est td:first-child { text-align: left; color: var(--muted); }
 
   /* reveal */
   .reveal { transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
@@ -254,7 +245,7 @@
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#expertise">Expertise</a>
       <a class="nav-link" href="#speaking">Speaking &amp; Events</a>
-      <a class="nav-link" href="#nonmem">NONMEM</a>
+      <a class="nav-link" href="#insights">Insights</a>
       <a class="nav-link" href="#contact">Contact</a>
     </nav>
     <a href="https://www.shaficonsultancy.com/" target="_blank" rel="noopener" id="navCta" class="btn btn-ghost !min-h-[40px] !text-[13.5px]">Shafi Consultancy <i data-lucide="arrow-up-right"></i></a>
@@ -265,7 +256,7 @@
       <a class="nav-link !text-[16px] !py-3 px-3" href="#about">About</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#expertise">Expertise</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#speaking">Speaking &amp; Events</a>
-      <a class="nav-link !text-[16px] !py-3 px-3" href="#nonmem">NONMEM</a>
+      <a class="nav-link !text-[16px] !py-3 px-3" href="#insights">Insights</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#contact">Contact</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="https://www.shaficonsultancy.com/" target="_blank" rel="noopener">Shafi Consultancy ↗</a>
     </nav>
@@ -527,14 +518,14 @@
 </section>
 
 <!-- ============================== NONMEM ============================== -->
-<section id="nonmem" class="py-20 lg:py-28">
+<section id="insights" class="py-20 lg:py-28">
   <div class="wrap">
     <div class="reveal grid lg:grid-cols-12 gap-6 items-end mb-10">
       <div class="lg:col-span-7 grid gap-4">
-        <p class="kicker"><span class="dot dot-pu"></span>Advanced modelling</p>
-        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">NONMEM analysis hub</h2>
+        <p class="kicker"><span class="dot dot-pu"></span>Insights &amp; perspectives</p>
+        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">Thoughts on clinical programming, innovation and the pharmaceutical industry</h2>
       </div>
-      <p class="lg:col-span-5 text-mute leading-relaxed">Non-linear mixed-effects modelling estimates how drug exposure varies between patients. Analysis-ready NONMEM datasets and clinical pharmacology programming are a specialist service delivered under Shafi's leadership.</p>
+      <p class="lg:col-span-5 text-mute leading-relaxed">Articles on clinical statistical programming, data standards, quality and leadership.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-4 mb-5">
@@ -543,45 +534,41 @@
       <div class="glass spot lift reveal p-5 grid gap-2"><i data-lucide="scatter-chart" class="w-5 h-5 text-pu"></i><h3 class="font-medium">Diagnostics</h3><p class="text-[14px] text-mute">Goodness-of-fit plots such as observed against predicted concentrations.</p></div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-      <div class="lg:col-span-7 glass reveal min-w-0 flex flex-col">
-        <div class="flex items-center justify-between gap-3 px-5 py-3.5 border-b border-white/10">
-          <div class="flex items-center gap-3 min-w-0">
-            <span class="flex gap-1.5" aria-hidden="true"><span class="w-2.5 h-2.5 rounded-full bg-white/15"></span><span class="w-2.5 h-2.5 rounded-full bg-white/15"></span><span class="w-2.5 h-2.5 rounded-full bg-white/15"></span></span>
-            <span class="font-mono text-[12.5px] text-mute truncate">run001.ctl</span>
-          </div>
-          <div class="flex gap-2">
-            <button class="btn btn-ghost !min-h-[36px] !px-3 !text-[12.5px] !rounded-[9px]" id="copyBtn" aria-label="Copy control stream"><i data-lucide="copy" class="!w-4 !h-4"></i><span>Copy</span></button>
-            <button class="btn btn-primary !min-h-[36px] !px-3.5 !text-[12.5px] !rounded-[9px]" id="runBtn"><i data-lucide="play" class="!w-4 !h-4"></i>Run</button>
-          </div>
-        </div>
-        <pre class="code" id="codeBlock" aria-label="NONMEM control stream"></pre>
-        <div class="console mt-auto" id="console" aria-live="polite"><span class="caret">Ready. Press Run to replay a simulated estimation.</span></div>
+    <div class="glass hud reveal p-6 sm:p-7 grid gap-5 min-w-0">
+      <div class="tbc"><b>Articles in preparation</b>No articles have been published yet. The topics below are proposals for the first pieces and do not represent Shafi's published views.</div>
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <p class="kicker !text-[10.5px]">Proposed topics</p>
+        <p class="font-mono text-[11px] text-dim">4 of 6 topics</p>
       </div>
-
-      <div class="lg:col-span-5 glass reveal p-5 sm:p-6 grid grid-cols-1 gap-4 content-start min-w-0">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <h3 class="h-display text-[18px] font-semibold">Observed vs predicted</h3>
-          <div class="flex gap-2" role="group" aria-label="Prediction type">
-            <button class="chip" style="--c:#A855F7" aria-pressed="true" data-pred="pred">PRED</button>
-            <button class="chip" style="--c:#22D3EE" aria-pressed="false" data-pred="ipred">IPRED</button>
-          </div>
-        </div>
-        <div class="chart h-[320px]" id="gofChart">
-          <canvas id="gofCanvas" role="img" aria-label="Scatter plot of observed plasma concentration against model predicted concentration, with line of identity"></canvas>
-          <div class="tip" id="gofTip"></div>
-        </div>
-        <p class="font-mono text-[12px] text-mute" id="gofStat"></p>
-        <table class="est w-full" aria-label="Parameter estimates from the simulated run">
-          <thead><tr><th>Parameter</th><th class="!text-right">Estimate</th><th class="!text-right">RSE</th></tr></thead>
-          <tbody>
-            <tr><td>CL (L/h)</td><td>4.18</td><td>4.6%</td></tr>
-            <tr><td>V (L)</td><td>37.9</td><td>5.2%</td></tr>
-            <tr><td>KA (1/h)</td><td>1.07</td><td>9.8%</td></tr>
-            <tr><td>Proportional error</td><td>11.8%</td><td>6.1%</td></tr>
-          </tbody>
-        </table>
-        <p class="text-[12px] text-dim">Simulated run: 40 subjects, 320 observations. Estimates are illustrative.</p>
+      <ul class="alist">
+          <li class="arow" data-category="CDISC &amp; Data Standards">
+            <div class="arow__meta"><span class="arow__cat">CDISC &amp; Data Standards</span><span class="status">In preparation</span></div>
+            <h4 class="arow__title">What standards-driven programming changes for a study team</h4>
+            <p class="arow__text">How SDTM and ADaM standards shape the way clinical programming work is organised, reviewed and delivered.</p>
+            <p class="arow__date">Date to be confirmed</p>
+          </li>
+          <li class="arow" data-category="Programming Automation">
+            <div class="arow__meta"><span class="arow__cat">Programming Automation</span><span class="status">In preparation</span></div>
+            <h4 class="arow__title">Automation and reusable macros in clinical reporting</h4>
+            <p class="arow__text">Where automation and metadata-driven approaches add value in producing tables, listings and figures.</p>
+            <p class="arow__date">Date to be confirmed</p>
+          </li>
+          <li class="arow" data-category="Quality Assurance &amp; Data Integrity">
+            <div class="arow__meta"><span class="arow__cat">Quality Assurance &amp; Data Integrity</span><span class="status">In preparation</span></div>
+            <h4 class="arow__title">Building quality into programming deliverables</h4>
+            <p class="arow__text">Validation, independent programming and the processes behind reliable clinical outputs.</p>
+            <p class="arow__date">Date to be confirmed</p>
+          </li>
+          <li class="arow" data-category="Clinical Trial Reporting">
+            <div class="arow__meta"><span class="arow__cat">Clinical Trial Reporting</span><span class="status">In preparation</span></div>
+            <h4 class="arow__title">From database lock to clinical study report</h4>
+            <p class="arow__text">The reporting stage of a clinical trial and the role statistical programming plays in it.</p>
+            <p class="arow__date">Date to be confirmed</p>
+          </li>
+      </ul>
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-1">
+        <p class="text-[13px] text-dim">All six proposed topics, with category filters, are on the Insights page.</p>
+        <a href="insights.html" class="btn btn-primary">More insights <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -684,7 +671,7 @@
         links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['about', 'expertise', 'speaking', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
+    ['about', 'expertise', 'speaking', 'insights', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
   }
 
   if (!RM && 'IntersectionObserver' in window) {
@@ -996,171 +983,6 @@
     tip.style.left = left + 'px'; tip.style.top = Math.max(y, tip.offsetHeight + 18) + 'px';
   }
 
-  /* ======================================================================
-     NONMEM hub — control stream, mock run, DV vs PRED
-     ====================================================================== */
-  (function nonmem() {
-    var CTL = [
-      '$PROBLEM  PopPK one-compartment oral absorption (simulated)',
-      '$INPUT    ID TIME AMT DV MDV EVID CMT WT',
-      '$DATA     poppk_demo.csv IGNORE=@',
-      '$SUBROUTINES ADVAN2 TRANS2',
-      '',
-      '$PK',
-      '  TVCL = THETA(1) * (WT/70)**0.75',
-      '  TVV  = THETA(2) * (WT/70)',
-      '  TVKA = THETA(3)',
-      '  CL   = TVCL * EXP(ETA(1))',
-      '  V    = TVV  * EXP(ETA(2))',
-      '  KA   = TVKA * EXP(ETA(3))',
-      '  S2   = V',
-      '',
-      '$ERROR',
-      '  IPRED = F',
-      '  W     = SQRT(THETA(4)**2 * IPRED**2 + THETA(5)**2)',
-      '  IWRES = (DV - IPRED) / W',
-      '  Y     = IPRED + W * EPS(1)',
-      '',
-      '$THETA  (0, 4.2)    ; CL (L/h)',
-      '        (0, 38)     ; V (L)',
-      '        (0, 1.1)    ; KA (1/h)',
-      '        (0, 0.12)   ; proportional error',
-      '        (0, 0.05)   ; additive error (mg/L)',
-      '$OMEGA  0.09 0.06 0.25',
-      '$SIGMA  1 FIX',
-      '',
-      '$ESTIMATION METHOD=1 INTERACTION MAXEVAL=9999 PRINT=5',
-      '$COVARIANCE PRINT=E',
-      '$TABLE   ID TIME DV PRED IPRED CWRES NOPRINT ONEHEADER FILE=sdtab001'
-    ];
-    var re = /(\$[A-Z]+)|\b(THETA|ETA|EPS)(?=\()|\b(EXP|SQRT|LOG|FIX)\b|\b(ADVAN\d+|TRANS\d+|METHOD|INTERACTION|MAXEVAL|PRINT|NOPRINT|ONEHEADER|FILE|IGNORE)\b|(\b\d+(?:\.\d+)?\b)/g;
-    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-    function hl(line) {
-      var ci = line.indexOf(';'), code = ci >= 0 ? line.slice(0, ci) : line, com = ci >= 0 ? line.slice(ci) : '';
-      var out = esc(code).replace(re, function (m, a, b, c, d, e) {
-        if (a) return '<span class="k-rec">' + a + '</span>';
-        if (b) return '<span class="k-par">' + b + '</span>';
-        if (c) return '<span class="k-fn">' + c + '</span>';
-        if (d) return '<span class="k-opt">' + d + '</span>';
-        return '<span class="k-num">' + e + '</span>';
-      });
-      return out + (com ? '<span class="k-com">' + esc(com) + '</span>' : '');
-    }
-    document.getElementById('codeBlock').innerHTML = CTL.map(function (l) { return '<span class="ln">' + (hl(l) || ' ') + '</span>'; }).join('');
-
-    var copyBtn = document.getElementById('copyBtn');
-    copyBtn.addEventListener('click', function () {
-      var text = CTL.join('\n'), label = copyBtn.querySelector('span');
-      function done(ok) { label.textContent = ok ? 'Copied' : 'Selected'; setTimeout(function () { label.textContent = 'Copy'; }, 1800); }
-      function fallback() { var r = document.createRange(); r.selectNodeContents(document.getElementById('codeBlock')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(false); }
-      try { navigator.clipboard.writeText(text).then(function () { done(true); }, fallback); } catch (e) { fallback(); }
-    });
-
-    /* simulated data */
-    var r = rng(42), D = 400, TIMES = [.5, 1, 2, 3, 4, 6, 8, 12], obs = [];
-    for (var id = 1; id <= 40; id++) {
-      var WT = clamp(72 + randn(r) * 12, 45, 110), e1 = randn(r) * .3, e2 = randn(r) * .245, e3 = randn(r) * .5;
-      var TVCL = 4.2 * Math.pow(WT / 70, .75), TVV = 38 * (WT / 70), TVKA = 1.1;
-      TIMES.forEach(function (t) {
-        var pred = conc1(t, D, TVCL, TVV, TVKA), ipred = conc1(t, D, TVCL * Math.exp(e1), TVV * Math.exp(e2), TVKA * Math.exp(e3));
-        var dv = Math.max(.05, ipred * (1 + .12 * randn(r)) + .05 * randn(r));
-        obs.push({ id: id, t: t, dv: dv, pred: pred, ipred: ipred });
-      });
-    }
-    var mode = 'pred', prog = 1, hover = null;
-    var cv = document.getElementById('gofCanvas'), tip = document.getElementById('gofTip'), stat = document.getElementById('gofStat');
-    var maxV = niceMax(Math.max.apply(null, obs.map(function (o) { return Math.max(o.dv, o.pred, o.ipred); })) * 1.02);
-    var pts = [];
-    function corr(xs, ys) {
-      var n = xs.length, mx = 0, my = 0; for (var i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; } mx /= n; my /= n;
-      var sxy = 0, sxx = 0, syy = 0; for (var j = 0; j < n; j++) { var a = xs[j] - mx, b = ys[j] - my; sxy += a * b; sxx += a * a; syy += b * b; }
-      return sxy / Math.sqrt(sxx * syy);
-    }
-    function draw() {
-      var c = setupCanvas(cv), g = c.g, w = c.w, h = c.h, pad = { l: 44, r: 12, t: 10, b: 38 }, pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
-      var X = function (v) { return pad.l + v / maxV * pw; }, Y = function (v) { return pad.t + ph - v / maxV * ph; };
-      g.font = '11px "JetBrains Mono", monospace'; g.lineWidth = 1;
-      for (var k = 0; k <= 4; k++) {
-        var v = maxV / 4 * k;
-        g.strokeStyle = 'rgba(255,255,255,.06)'; g.beginPath(); g.moveTo(pad.l, Y(v) + .5); g.lineTo(pad.l + pw, Y(v) + .5); g.moveTo(X(v) + .5, pad.t); g.lineTo(X(v) + .5, pad.t + ph); g.stroke();
-        g.fillStyle = '#6B7891'; g.textAlign = 'right'; g.fillText(+v.toFixed(1), pad.l - 6, Y(v) + 4); g.textAlign = 'center'; g.fillText(+v.toFixed(1), X(v), pad.t + ph + 16);
-      }
-      g.fillText((mode === 'pred' ? 'PRED' : 'IPRED') + ' (mg/L)', pad.l + pw / 2, pad.t + ph + 32);
-      g.save(); g.translate(12, pad.t + ph / 2); g.rotate(-Math.PI / 2); g.fillText('DV (mg/L)', 0, 0); g.restore();
-      g.strokeStyle = 'rgba(255,255,255,.4)'; g.setLineDash([5, 5]); g.beginPath(); g.moveTo(X(0), Y(0)); g.lineTo(X(maxV), Y(maxV)); g.stroke(); g.setLineDash([]);
-      var color = mode === 'pred' ? HEX.purple : HEX.cyan, xs = [], ys = [];
-      pts = [];
-      obs.forEach(function (o, i) {
-        var xv = o[mode], show = clamp(prog * 1.3 - i / obs.length * .3, 0, 1);
-        xs.push(xv); ys.push(o.dv);
-        if (show <= 0) return;
-        var px = X(xv), py = Y(o.dv); pts.push({ x: px, y: py, o: o });
-        g.globalAlpha = .55 * show; g.fillStyle = color; g.beginPath(); g.arc(px, py, 3 * (.5 + show * .5), 0, 7); g.fill();
-      });
-      g.globalAlpha = 1;
-      if (prog >= 1) {
-        var sorted = obs.slice().sort(function (a, b) { return a[mode] - b[mode]; }), B = 10, sz = Math.ceil(sorted.length / B);
-        g.beginPath();
-        for (var bi = 0; bi < B; bi++) {
-          var seg = sorted.slice(bi * sz, (bi + 1) * sz); if (!seg.length) continue;
-          var mx = seg.reduce(function (s, o) { return s + o[mode]; }, 0) / seg.length, my = seg.reduce(function (s, o) { return s + o.dv; }, 0) / seg.length;
-          if (bi) g.lineTo(X(mx), Y(my)); else g.moveTo(X(mx), Y(my));
-        }
-        g.strokeStyle = HEX.emerald; g.lineWidth = 2; g.shadowColor = HEX.emerald; g.shadowBlur = 8; g.stroke(); g.shadowBlur = 0;
-      }
-      if (hover) {
-        g.strokeStyle = '#fff'; g.lineWidth = 1.5; g.beginPath(); g.arc(hover.x, hover.y, 6, 0, 7); g.stroke();
-        placeTip(tip, hover.x, hover.y, w, 'ID ' + hover.o.id + ' · TIME ' + hover.o.t + ' h<br>DV    ' + hover.o.dv.toFixed(2) + '<br>' + (mode === 'pred' ? 'PRED  ' : 'IPRED ') + hover.o[mode].toFixed(2));
-      }
-      stat.innerHTML = 'n = ' + obs.length + ' · r(DV, ' + mode.toUpperCase() + ') = <span style="color:' + color + '">' + corr(xs, ys).toFixed(3) + '</span> · <span style="color:' + HEX.emerald + '">—</span> binned mean';
-    }
-    function animate() {
-      if (RM) { prog = 1; draw(); return; }
-      var t0 = performance.now();
-      (function tick(now) { prog = Math.min(1, (now - t0) / 1400); draw(); if (prog < 1) requestAnimationFrame(tick); })(t0);
-    }
-    cv.addEventListener('pointermove', function (e) {
-      var rc = cv.getBoundingClientRect(), x = e.clientX - rc.left, y = e.clientY - rc.top, best = null, bd = 196;
-      pts.forEach(function (p) { var d = (p.x - x) * (p.x - x) + (p.y - y) * (p.y - y); if (d < bd) { bd = d; best = p; } });
-      hover = best; if (!best) tip.classList.remove('show'); draw();
-    });
-    cv.addEventListener('pointerleave', function () { hover = null; tip.classList.remove('show'); draw(); });
-    var chips = [].slice.call(document.querySelectorAll('[data-pred]'));
-    chips.forEach(function (b) {
-      b.addEventListener('click', function () {
-        mode = b.getAttribute('data-pred'); chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === b)); });
-        hover = null; tip.classList.remove('show'); animate();
-      });
-    });
-    if ('ResizeObserver' in window) new ResizeObserver(function () { draw(); }).observe(cv); else window.addEventListener('resize', draw);
-    draw();
-
-    /* mock run */
-    var runBtn = document.getElementById('runBtn'), con = document.getElementById('console');
-    var LOG = [
-      ['hd', 'NONMEM run001 · simulated replay'],
-      ['', ' Data: 40 subjects · 320 observations · 40 dose records'],
-      ['', ' Estimation method: FOCE with interaction'],
-      ['', ' ITERATION    0   OBJ  3125.4418   NFE    8'],
-      ['', ' ITERATION    5   OBJ  2903.1172   NFE   57'],
-      ['', ' ITERATION   10   OBJ  2852.6031   NFE  109'],
-      ['', ' ITERATION   15   OBJ  2841.3729   NFE  161'],
-      ['ok', ' #TERM: MINIMIZATION SUCCESSFUL'],
-      ['ok', ' COVARIANCE STEP COMPLETED'],
-      ['', ' Writing sdtab001 … DV vs PRED updated']
-    ];
-    runBtn.addEventListener('click', function () {
-      runBtn.disabled = true; con.innerHTML = ''; var i = 0;
-      (function next() {
-        if (i < LOG.length) {
-          var d = document.createElement('div'); d.className = 'ln-in ' + LOG[i][0]; d.textContent = LOG[i][1]; con.appendChild(d); con.scrollTop = con.scrollHeight; i++;
-          setTimeout(next, RM ? 30 : 260 + Math.random() * 160); return;
-        }
-        var cur = document.createElement('div'); cur.className = 'caret'; con.appendChild(cur);
-        runBtn.disabled = false; prog = 0; animate();
-      })();
-    });
-  })();
 })();
 </script>
 </body>
