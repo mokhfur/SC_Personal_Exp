@@ -141,6 +141,21 @@
   .tbc-inline { font-style: italic; color: var(--muted); border-bottom: 1px dashed rgba(168,85,247,.75); text-decoration: none; }
   .tbc-inline::before { content: "To be supplied: "; font-style: normal; font: 500 10px 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); }
 
+  /* expertise list */
+  .xlist { list-style: none; margin: 0; padding: 0; display: grid; }
+  .xrow { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 6px 16px; align-items: start; padding: 16px 0; border-top: 1px solid var(--line); transition: background .25s; }
+  .xrow:first-child { border-top: 0; padding-top: 0; }
+  .xrow__icon { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: var(--emerald); }
+  .xrow__icon svg { width: 19px; height: 19px; }
+  .xrow__body { display: grid; gap: 3px; min-width: 0; }
+  .xrow__title { margin: 0; font: 500 15.5px/1.4 'IBM Plex Sans', sans-serif; color: var(--text); }
+  .xrow__text { font-size: 13.5px; line-height: 1.6; color: var(--muted); max-width: 60ch; }
+  .inv { display: inline-flex; align-items: center; gap: 7px; font: 500 10.5px/1 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; padding-top: 4px; }
+  .inv::before { content: ""; width: 7px; height: 7px; border: 1px solid var(--emerald); border-radius: 2px; flex: none; }
+  .inv--own::before { background: var(--emerald); box-shadow: 0 0 8px var(--emerald); }
+  p .inv { padding-top: 0; margin-right: 10px; white-space: normal; }
+  @media (max-width: 640px) { .xrow { grid-template-columns: 40px minmax(0, 1fr); } .xrow .inv { grid-column: 2; } }
+
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
   .nav.scrolled { background: rgba(11,15,25,.72); border-bottom-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -264,7 +279,7 @@
     </a>
     <nav aria-label="Main" class="hidden lg:flex items-center gap-7">
       <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#analytics">Analytics</a>
+      <a class="nav-link" href="#expertise">Expertise</a>
       <a class="nav-link" href="#tlf">TLF engine</a>
       <a class="nav-link" href="#nonmem">NONMEM</a>
       <a class="nav-link" href="#contact">Contact</a>
@@ -275,7 +290,7 @@
   <div id="mobileNav" class="mobile-panel lg:hidden wrap pb-5">
     <nav aria-label="Mobile" class="glass p-3 grid">
       <a class="nav-link !text-[16px] !py-3 px-3" href="#about">About</a>
-      <a class="nav-link !text-[16px] !py-3 px-3" href="#analytics">Analytics</a>
+      <a class="nav-link !text-[16px] !py-3 px-3" href="#expertise">Expertise</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#tlf">TLF engine</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#nonmem">NONMEM</a>
       <a class="nav-link !text-[16px] !py-3 px-3" href="#contact">Contact</a>
@@ -405,14 +420,14 @@
 </section>
 
 <!-- ============================== ANALYTICS ============================== -->
-<section id="analytics" class="py-20 lg:py-28">
+<section id="expertise" class="py-20 lg:py-28">
   <div class="wrap">
     <div class="reveal grid lg:grid-cols-12 gap-6 items-end mb-10">
       <div class="lg:col-span-7 grid gap-4">
-        <p class="kicker"><span class="dot dot-em"></span>Statistics &amp; clean data</p>
-        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">Clinical analytics dashboard</h2>
+        <p class="kicker"><span class="dot dot-em"></span>Industry experience</p>
+        <h2 class="h-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.08]">Expertise</h2>
       </div>
-      <p class="lg:col-span-5 text-mute leading-relaxed">The kind of outputs statistical programmers produce at the end of a trial. The charts use simulated data and respond to hover and the controls.</p>
+      <p class="lg:col-span-5 text-mute leading-relaxed">Expertise across clinical development and pharmaceutical operations, from a professional background in statistical programming to the leadership of a specialist company.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
@@ -438,43 +453,50 @@
         </div>
       </div>
 
-      <!-- charts -->
-      <div class="lg:col-span-8 glass reveal p-5 sm:p-6 grid grid-cols-1 gap-5 content-start min-w-0">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div role="tablist" aria-label="Chart" class="flex gap-1 overflow-x-auto max-w-full p-1 rounded-[12px] border border-white/10 bg-white/[.02]">
-            <button role="tab" id="tab-km" aria-controls="chartPanel" aria-selected="true" class="tab" data-view="km"><span class="tab-dot" style="background:#34D399"></span>Kaplan–Meier survival</button>
-            <button role="tab" id="tab-pk" aria-controls="chartPanel" aria-selected="false" tabindex="-1" class="tab" data-view="pk"><span class="tab-dot" style="background:#A855F7"></span>Multi-dose response</button>
+      <!-- expertise panel -->
+      <div class="lg:col-span-8 glass hud reveal p-5 sm:p-7 grid grid-cols-1 gap-6 content-start min-w-0">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div class="grid gap-2">
+            <p class="kicker !text-[10.5px]">Six areas</p>
+            <h3 class="h-display text-[clamp(1.35rem,2.2vw,1.75rem)] font-semibold leading-[1.2]">Hands-on background, oversight and leadership</h3>
           </div>
-          <span class="font-mono text-[11px] tracking-[.12em] uppercase text-dim">Simulated data</span>
+          <p class="text-[12.5px] text-dim max-w-[40ch]">Each area is labelled with Shafi's relationship to it. <span class="inv inv--own">His own background or role</span> <span class="inv">Experience or oversight of work delivered by his teams</span></p>
         </div>
-
-        <div id="chartPanel" role="tabpanel" aria-labelledby="tab-km" class="grid gap-4">
-          <div class="flex flex-wrap items-center justify-between gap-3" id="kmControls">
-            <div class="flex flex-wrap gap-2">
-              <button class="chip" style="--c:#22D3EE" aria-pressed="true" data-arm="0"><span class="swatch"></span>Control</button>
-              <button class="chip" style="--c:#34D399" aria-pressed="true" data-arm="1"><span class="swatch"></span>Treatment</button>
-            </div>
-            <p class="font-mono text-[12px] text-mute" id="kmSummary"></p>
-          </div>
-          <div class="flex flex-wrap items-center justify-between gap-3" id="pkControls" hidden>
-            <div class="flex flex-wrap gap-2">
-              <button class="chip" style="--c:#22D3EE" aria-pressed="true" data-dose="0"><span class="swatch"></span>100 mg q12h</button>
-              <button class="chip" style="--c:#34D399" aria-pressed="true" data-dose="1"><span class="swatch"></span>200 mg q12h</button>
-              <button class="chip" style="--c:#A855F7" aria-pressed="true" data-dose="2"><span class="swatch"></span>400 mg q12h</button>
-            </div>
-            <p class="font-mono text-[12px] text-mute">Therapeutic window 2–8 mg/L</p>
-          </div>
-          <div class="chart h-[340px] sm:h-[380px]" id="mainChart">
-            <canvas id="chartCanvas" role="img" aria-label="Kaplan–Meier survival curves for a simulated control and treatment arm"></canvas>
-            <div class="tip" id="chartTip"></div>
-          </div>
-          <div id="riskWrap" class="overflow-x-auto">
-            <table class="risk" aria-label="Number at risk">
-              <thead><tr><th scope="col">At risk</th></tr></thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <p class="text-[13px] text-dim" id="pkNote" hidden>One-compartment oral model with first-order absorption, dosed every 12 hours for 7 days. Steady state is reached after about five half-lives.</p>
+        <ul class="xlist">
+          <li class="xrow">
+            <span class="xrow__icon"><i data-lucide="code"></i></span>
+            <div class="xrow__body"><h3 class="xrow__title">Clinical Statistical Programming</h3><p class="xrow__text">Clinical trial reporting, SAS programming and statistical programming solutions: the core discipline of his career and his company.</p></div>
+            <span class="inv inv--own">Professional background</span>
+          </li>
+          <li class="xrow">
+            <span class="xrow__icon"><i data-lucide="layers"></i></span>
+            <div class="xrow__body"><h3 class="xrow__title">CDISC &amp; Regulatory Standards</h3><p class="xrow__text">SDTM and ADaM standards-driven clinical data, planned and delivered under his oversight.</p></div>
+            <span class="inv">Strategic oversight</span>
+          </li>
+          <li class="xrow">
+            <span class="xrow__icon"><i data-lucide="flask-conical"></i></span>
+            <div class="xrow__body"><h3 class="xrow__title">Clinical Development</h3><p class="xrow__text">Clinical trial requirements and reporting across study design, data collection, analysis and reporting.</p></div>
+            <span class="inv">Industry experience</span>
+          </li>
+          <li class="xrow">
+            <span class="xrow__icon"><i data-lucide="sparkles"></i></span>
+            <div class="xrow__body"><h3 class="xrow__title">Programming Innovation</h3><p class="xrow__text">Reusable macros, automation and metadata-driven programming that make clinical reporting more efficient.</p></div>
+            <span class="inv">Strategic oversight</span>
+          </li>
+          <li class="xrow">
+            <span class="xrow__icon"><i data-lucide="line-chart"></i></span>
+            <div class="xrow__body"><h3 class="xrow__title">PK/PD &amp; Pharmacometric Data</h3><p class="xrow__text">Clinical pharmacology programming and NONMEM-ready datasets for population modelling.</p></div>
+            <span class="inv">Strategic oversight</span>
+          </li>
+          <li class="xrow">
+            <span class="xrow__icon"><i data-lucide="briefcase"></i></span>
+            <div class="xrow__body"><h3 class="xrow__title">Business &amp; Operations Leadership</h3><p class="xrow__text">Building specialist clinical programming operations and international client relationships since 2001.</p></div>
+            <span class="inv inv--own">Leadership</span>
+          </li>
+        </ul>
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-1">
+          <p class="text-[13px] text-dim">Full descriptions of each area are on the Expertise page.</p>
+          <a href="expertise.html" class="btn btn-primary">More about expertise <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -680,7 +702,7 @@
         links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['about', 'analytics', 'tlf', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
+    ['about', 'expertise', 'tlf', 'nonmem', 'contact'].forEach(function (id) { secIO.observe(document.getElementById(id)); });
   }
 
   if (!RM && 'IntersectionObserver' in window) {
@@ -985,159 +1007,6 @@
   }
 
   if (hasThree) { try { initBackground(); } catch (e) { console.warn('Background unavailable', e); } }
-
-  /* ======================================================================
-     Dashboard — Kaplan–Meier and multi-dose response
-     ====================================================================== */
-  (function dashboard() {
-    var cv = document.getElementById('chartCanvas'), tip = document.getElementById('chartTip');
-    var view = 'km', prog = 1, hoverX = null, animT = 0;
-    var armOn = [true, true], doseOn = [true, true, true];
-    var ARMS = [{ name: 'Control', color: HEX.cyan, med: 13.8, seed: 11 }, { name: 'Treatment', color: HEX.emerald, med: 21.5, seed: 23 }];
-    var XMAX = 36;
-    ARMS.forEach(function (A) {
-      var r = rng(A.seed), lam = Math.LN2 / A.med, data = [];
-      for (var i = 0; i < 150; i++) {
-        var te = -Math.log(1 - r()) / lam, tc = Math.min(18 + r() * 18, -Math.log(1 - r()) * 80);
-        data.push({ t: Math.min(te, tc), e: te <= tc ? 1 : 0 });
-      }
-      data.sort(function (a, b) { return a.t - b.t; });
-      var n = data.length, S = 1, steps = [{ t: 0, S: 1 }], cens = [], i2 = 0, events = 0;
-      while (i2 < data.length) {
-        var t = data[i2].t, d = 0, c = 0;
-        while (i2 < data.length && data[i2].t === t) { if (data[i2].e) d++; else c++; i2++; }
-        if (d) { S *= 1 - d / n; steps.push({ t: t, S: S }); events += d; }
-        if (c && t <= XMAX) cens.push({ t: t, S: S });
-        n -= d + c;
-      }
-      A.data = data; A.steps = steps; A.cens = cens; A.events = events;
-      A.median = null; for (var k = 0; k < steps.length; k++) if (steps[k].S <= .5) { A.median = steps[k].t; break; }
-    });
-    function Sat(A, t) { var s = 1; for (var k = 0; k < A.steps.length && A.steps[k].t <= t; k++) s = A.steps[k].S; return s; }
-    function atRisk(A, t) { var c = 0; A.data.forEach(function (d) { if (d.t >= t) c++; }); return c; }
-
-    document.getElementById('kmSummary').textContent = 'Median: Control ' + ARMS[0].median.toFixed(1) + ' mo · Treatment ' + ARMS[1].median.toFixed(1) + ' mo';
-    var risk = document.querySelector('#riskWrap table');
-    var times = [0, 6, 12, 18, 24, 30, 36];
-    risk.querySelector('thead tr').innerHTML = '<th scope="col">At risk</th>' + times.map(function (t) { return '<th scope="col">' + t + '</th>'; }).join('');
-    risk.querySelector('tbody').innerHTML = ARMS.map(function (A) {
-      return '<tr><td><span class="inline-block w-2.5 h-[2px] mr-2 align-middle" style="background:' + A.color + '"></span>' + A.name + '</td>' + times.map(function (t) { return '<td>' + atRisk(A, t) + '</td>'; }).join('') + '</tr>';
-    }).join('');
-
-    /* multi-dose PK */
-    var DOSES = [{ d: 100, color: HEX.cyan }, { d: 200, color: HEX.emerald }, { d: 400, color: HEX.purple }];
-    var P = { CL: 4.2, V: 38, KA: 1.1, tau: 12, end: 168 };
-    function cMulti(t, D) { var c = 0; for (var td = 0; td <= t && td < P.end; td += P.tau) c += conc1(t - td, D, P.CL, P.V, P.KA); return c; }
-    DOSES.forEach(function (o) { o.pts = []; for (var t = 0; t <= P.end; t += .5) o.pts.push([t, cMulti(t, o.d)]); });
-
-    var PAD = { l: 50, r: 16, t: 14, b: 36 };
-    function axes(g, w, h, xmax, ymax, xTicks, yTicks, xLab, yFmt) {
-      var pw = w - PAD.l - PAD.r, ph = h - PAD.t - PAD.b;
-      g.font = '11px "JetBrains Mono", monospace'; g.fillStyle = '#6B7891'; g.strokeStyle = 'rgba(255,255,255,.06)'; g.lineWidth = 1;
-      yTicks.forEach(function (v) { var y = PAD.t + ph - v / ymax * ph; g.beginPath(); g.moveTo(PAD.l, y + .5); g.lineTo(PAD.l + pw, y + .5); g.stroke(); g.textAlign = 'right'; g.fillText(yFmt(v), PAD.l - 8, y + 4); });
-      xTicks.forEach(function (v) { var x = PAD.l + v / xmax * pw; g.textAlign = 'center'; g.fillText(v, x, PAD.t + ph + 18); });
-      g.textAlign = 'right'; g.fillText(xLab, PAD.l + pw, PAD.t + ph + 32);
-      g.strokeStyle = 'rgba(255,255,255,.18)'; g.beginPath(); g.moveTo(PAD.l, PAD.t); g.lineTo(PAD.l, PAD.t + ph + .5); g.lineTo(PAD.l + pw, PAD.t + ph + .5); g.stroke();
-      return { pw: pw, ph: ph };
-    }
-    function glowLine(g, color) { g.strokeStyle = color; g.lineWidth = 2; g.shadowColor = color; g.shadowBlur = 10; g.stroke(); g.shadowBlur = 0; }
-
-    function drawKM() {
-      var c = setupCanvas(cv), g = c.g, w = c.w, h = c.h;
-      var a = axes(g, w, h, XMAX, 1, [0, 6, 12, 18, 24, 30, 36], [0, .25, .5, .75, 1], 'Months', function (v) { return Math.round(v * 100) + '%'; });
-      var X = function (t) { return PAD.l + t / XMAX * a.pw; }, Y = function (s) { return PAD.t + a.ph - s * a.ph; };
-      g.save(); g.beginPath(); g.rect(PAD.l, 0, a.pw * prog + 2, h); g.clip();
-      g.setLineDash([3, 4]); g.strokeStyle = 'rgba(255,255,255,.18)'; g.lineWidth = 1;
-      g.beginPath(); g.moveTo(PAD.l, Y(.5)); g.lineTo(PAD.l + a.pw, Y(.5)); g.stroke(); g.setLineDash([]);
-      ARMS.forEach(function (A, ai) {
-        if (!armOn[ai]) return;
-        g.beginPath(); g.moveTo(X(0), Y(1)); var prev = 1;
-        A.steps.forEach(function (s) { if (s.t > XMAX) return; g.lineTo(X(s.t), Y(prev)); g.lineTo(X(s.t), Y(s.S)); prev = s.S; });
-        g.lineTo(X(XMAX), Y(prev)); glowLine(g, A.color);
-        g.strokeStyle = A.color; g.lineWidth = 1.2;
-        A.cens.forEach(function (cz) { var x = X(cz.t), y = Y(cz.S); g.beginPath(); g.moveTo(x, y - 4); g.lineTo(x, y + 4); g.stroke(); });
-        if (A.median && A.median <= XMAX) {
-          g.setLineDash([2, 3]); g.strokeStyle = A.color; g.globalAlpha = .55;
-          g.beginPath(); g.moveTo(X(A.median), Y(.5)); g.lineTo(X(A.median), Y(0)); g.stroke(); g.setLineDash([]); g.globalAlpha = 1;
-        }
-      });
-      g.restore();
-      if (hoverX !== null && prog >= 1) {
-        var t = clamp((hoverX - PAD.l) / a.pw * XMAX, 0, XMAX), x = X(t), html = '<span style="color:#9AA6BC">Month ' + t.toFixed(1) + '</span>', topY = h;
-        g.strokeStyle = 'rgba(255,255,255,.25)'; g.beginPath(); g.moveTo(x + .5, PAD.t); g.lineTo(x + .5, PAD.t + a.ph); g.stroke();
-        ARMS.forEach(function (A, ai) {
-          if (!armOn[ai]) return; var s = Sat(A, t), y = Y(s); topY = Math.min(topY, y);
-          g.fillStyle = A.color; g.beginPath(); g.arc(x, y, 4, 0, 7); g.fill();
-          html += '<br><span style="color:' + A.color + '">●</span> ' + A.name + '  ' + (s * 100).toFixed(1) + '%';
-        });
-        placeTip(tip, x, topY, w, html);
-      }
-    }
-    function drawPK() {
-      var c = setupCanvas(cv), g = c.g, w = c.w, h = c.h, ym = 0;
-      DOSES.forEach(function (o, i) { if (doseOn[i]) o.pts.forEach(function (p) { if (p[1] > ym) ym = p[1]; }); });
-      ym = niceMax(Math.max(ym, 9) * 1.05);
-      var yt = []; for (var v = 0; v <= ym + 1e-9; v += ym / 5) yt.push(+v.toFixed(2));
-      var a = axes(g, w, h, P.end, ym, [0, 24, 48, 72, 96, 120, 144, 168], yt, 'Hours', function (v) { return v + ''; });
-      var X = function (t) { return PAD.l + t / P.end * a.pw; }, Y = function (cc) { return PAD.t + a.ph - cc / ym * a.ph; };
-      g.fillStyle = 'rgba(52,211,153,.07)'; g.fillRect(PAD.l, Y(8), a.pw, Y(2) - Y(8));
-      g.strokeStyle = 'rgba(52,211,153,.35)'; g.setLineDash([4, 4]); g.lineWidth = 1;
-      [2, 8].forEach(function (v) { g.beginPath(); g.moveTo(PAD.l, Y(v) + .5); g.lineTo(PAD.l + a.pw, Y(v) + .5); g.stroke(); });
-      g.setLineDash([]); g.fillStyle = 'rgba(52,211,153,.75)'; g.font = '10.5px "JetBrains Mono", monospace'; g.textAlign = 'left';
-      g.fillText('MTC 8 mg/L', PAD.l + 6, Y(8) - 5); g.fillText('MEC 2 mg/L', PAD.l + 6, Y(2) - 5);
-      g.fillStyle = 'rgba(168,85,247,.5)';
-      for (var td = 0; td < P.end; td += P.tau) g.fillRect(X(td) - .5, PAD.t + a.ph - 5, 1, 5);
-      g.fillStyle = '#6B7891'; g.save(); g.translate(14, PAD.t + a.ph / 2); g.rotate(-Math.PI / 2); g.textAlign = 'center'; g.fillText('mg/L', 0, 0); g.restore();
-      g.save(); g.beginPath(); g.rect(PAD.l, 0, a.pw * prog + 2, h); g.clip();
-      DOSES.forEach(function (o, i) {
-        if (!doseOn[i]) return;
-        g.beginPath(); o.pts.forEach(function (p, k) { var x = X(p[0]), y = Y(p[1]); if (k) g.lineTo(x, y); else g.moveTo(x, y); });
-        glowLine(g, o.color);
-      });
-      g.restore();
-      if (hoverX !== null && prog >= 1) {
-        var t = clamp((hoverX - PAD.l) / a.pw * P.end, 0, P.end), x = X(t), html = '<span style="color:#9AA6BC">Hour ' + t.toFixed(1) + '</span>', topY = h;
-        g.strokeStyle = 'rgba(255,255,255,.25)'; g.beginPath(); g.moveTo(x + .5, PAD.t); g.lineTo(x + .5, PAD.t + a.ph); g.stroke();
-        DOSES.forEach(function (o, i) {
-          if (!doseOn[i]) return; var cc = cMulti(t, o.d), y = Y(cc); topY = Math.min(topY, y);
-          g.fillStyle = o.color; g.beginPath(); g.arc(x, y, 4, 0, 7); g.fill();
-          html += '<br><span style="color:' + o.color + '">●</span> ' + o.d + ' mg  ' + cc.toFixed(2) + ' mg/L';
-        });
-        placeTip(tip, x, topY, w, html);
-      }
-    }
-    function draw() { if (view === 'km') drawKM(); else drawPK(); }
-    function animate() {
-      if (RM) { prog = 1; draw(); return; }
-      var t0 = performance.now(); animT++; var my = animT;
-      (function tick(now) { if (my !== animT) return; prog = Math.min(1, (now - t0) / 1300); prog = easeOut(prog); draw(); if (prog < 1) requestAnimationFrame(tick); })(t0);
-    }
-    cv.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); hoverX = e.clientX - r.left; draw(); });
-    cv.addEventListener('pointerleave', function () { hoverX = null; tip.classList.remove('show'); draw(); });
-
-    var tabs = [].slice.call(document.querySelectorAll('[data-view]'));
-    function setView(b) {
-      selectTab(tabs, b); view = b.getAttribute('data-view');
-      document.getElementById('chartPanel').setAttribute('aria-labelledby', b.id);
-      document.getElementById('kmControls').hidden = view !== 'km';
-      document.getElementById('riskWrap').hidden = view !== 'km';
-      document.getElementById('pkControls').hidden = view !== 'pk';
-      document.getElementById('pkNote').hidden = view !== 'pk';
-      cv.setAttribute('aria-label', view === 'km' ? 'Kaplan–Meier survival curves for a simulated control and treatment arm' : 'Plasma concentration over seven days for three dose levels given every 12 hours, with the therapeutic window shaded');
-      hoverX = null; tip.classList.remove('show'); animate();
-    }
-    tabs.forEach(function (b) { b.addEventListener('click', function () { setView(b); }); });
-    tabKeys(tabs, setView);
-    [].forEach.call(document.querySelectorAll('[data-arm]'), function (b) {
-      b.addEventListener('click', function () { var i = +b.getAttribute('data-arm'); armOn[i] = !armOn[i]; b.setAttribute('aria-pressed', String(armOn[i])); draw(); });
-    });
-    [].forEach.call(document.querySelectorAll('[data-dose]'), function (b) {
-      b.addEventListener('click', function () { var i = +b.getAttribute('data-dose'); doseOn[i] = !doseOn[i]; b.setAttribute('aria-pressed', String(doseOn[i])); draw(); });
-    });
-    if ('ResizeObserver' in window) new ResizeObserver(function () { draw(); }).observe(cv); else window.addEventListener('resize', draw);
-    draw();
-    if (cv.getBoundingClientRect().top > window.innerHeight) { prog = 0; draw(); onceVisible(cv, animate, '-10% 0px'); }
-  })();
 
   function placeTip(tip, x, y, w, html) {
     tip.innerHTML = html; tip.classList.add('show');
