@@ -221,6 +221,23 @@
   .social:hover { color: #fff; border-color: rgba(34,211,238,.6); transform: translateY(-2px); }
   .social svg { width: 15px; height: 15px; }
 
+  .arow--post { padding: 0; }
+  .arow--post:first-child { padding-top: 0; }
+  .arow__link { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; align-items: start;
+    padding: 18px 0; text-decoration: none; transition: opacity .25s; }
+  .arow--post:first-child .arow__link { padding-top: 0; }
+  .arow__thumb { width: 64px; height: 64px; object-fit: cover; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--ink-2); }
+  .arow__text-wrap { display: grid; gap: 6px; min-width: 0; }
+  .arow__link .arow__title { font: 600 17px/1.4 'Sora', sans-serif; letter-spacing: -.01em; color: var(--text); transition: color .25s; }
+  .arow__link:hover .arow__title { color: var(--cyan); }
+  .arow__link .arow__text, .arow__link .arow__date { display: block; }
+  .arow__link .arow__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .arow__link .arow__date { color: var(--cyan); }
+  .status--live { border-style: solid; border-color: rgba(34,211,238,.5); color: var(--text); }
+  @media (max-width: 480px) { .arow__link { grid-template-columns: 48px minmax(0, 1fr); gap: 12px; }
+    .arow__thumb { width: 48px; height: 48px; } }
+
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
   .nav.scrolled { background: rgba(11,15,25,.72); border-bottom-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -630,28 +647,46 @@
     </div>
 
     <div class="glass hud reveal p-6 sm:p-7 grid gap-5 min-w-0">
-      <div class="grid gap-3">
-        <p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Published articles</p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href="maintaining-programs-gpp.html" class="glass spot lift grid gap-3 p-5 no-underline content-start">
-            <img src="assets/insights/good-programming-practice.jpg" width="1280" height="632" loading="lazy" decoding="async" class="w-full rounded-xl border border-white/10" alt="A SAS program listing headed &quot;Examples of bad practice&quot;.">
-            <h3 class="h-display text-[17px] font-semibold text-white leading-[1.25]">We Spend More Time Maintaining Programs Than Writing New Ones</h3>
-            <p class="text-[14px] leading-[1.65] text-mute">Which is exactly why Good Programming Practice is worth the small effort it takes.</p>
-            <p class="text-[12.5px] text-cy">Read the article →</p>
-          </a>
-          <a href="three-rules-every-programmer.html" class="glass spot lift grid gap-3 p-5 no-underline content-start">
-            <img src="assets/insights/three-rules-every-programmer.jpg" width="800" height="800" loading="lazy" decoding="async" class="w-full max-w-[150px] rounded-xl border border-white/10" alt="Card listing three rules: do not trust the data, do not trust the specifications, your code will be changed later.">
-            <h3 class="h-display text-[17px] font-semibold text-white leading-[1.25]">Three Rules Every Programmer Should Live By</h3>
-            <p class="text-[14px] leading-[1.65] text-mute">Great programming is not just about writing code — it's about how you think while writing it.</p>
-            <p class="text-[12.5px] text-cy">Read the article →</p>
-          </a>
-          <a href="road-to-better-programming.html" class="glass spot lift grid gap-3 p-5 no-underline content-start">
-            <img src="assets/insights/road-to-better-programming.jpg" width="800" height="800" loading="lazy" decoding="async" class="w-full max-w-[150px] rounded-xl border border-white/10" alt="Two illustrated roads: a clear road through green hills above, a winding road through grey rubble below.">
-            <h3 class="h-display text-[17px] font-semibold text-white leading-[1.25]">The Road to Better Programming</h3>
-            <p class="text-[14px] leading-[1.65] text-mute">Good programming handles the expected, but great programming anticipates the unexpected.</p>
-            <p class="text-[12.5px] text-cy">Read the article →</p>
-          </a>
+      <div class="grid gap-4">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Published articles</p>
+          <p class="font-mono text-[11px] text-dim">3 articles</p>
         </div>
+        <ul class="alist">
+          <li class="arow arow--post">
+            <a href="maintaining-programs-gpp.html" class="arow__link">
+              <img src="assets/insights/good-programming-practice.jpg" width="800" height="800" loading="lazy" decoding="async" class="arow__thumb" alt="A SAS program listing headed &quot;Examples of bad practice&quot;.">
+              <span class="arow__text-wrap">
+                <span class="arow__meta"><span class="arow__cat">Programming best practice</span><span class="status status--live">Article</span></span>
+                <span class="arow__title">We Spend More Time Maintaining Programs Than Writing New Ones</span>
+                <span class="arow__text">Why Good Programming Practice saves time, reduces effort and keeps clinical trial programs re-usable for years.</span>
+                <span class="arow__date">Read the article &rarr;</span>
+              </span>
+            </a>
+          </li>
+          <li class="arow arow--post">
+            <a href="three-rules-every-programmer.html" class="arow__link">
+              <img src="assets/insights/three-rules-every-programmer.jpg" width="800" height="800" loading="lazy" decoding="async" class="arow__thumb" alt="Card listing three rules: do not trust the data, do not trust the specifications, your code will be changed later.">
+              <span class="arow__text-wrap">
+                <span class="arow__meta"><span class="arow__cat">Programming best practice</span><span class="status status--live">Article</span></span>
+                <span class="arow__title">Three Rules Every Programmer Should Live By</span>
+                <span class="arow__text">Do not trust the data, do not trust the specifications, and assume your code will be changed later.</span>
+                <span class="arow__date">Read the article &rarr;</span>
+              </span>
+            </a>
+          </li>
+          <li class="arow arow--post">
+            <a href="road-to-better-programming.html" class="arow__link">
+              <img src="assets/insights/road-to-better-programming.jpg" width="800" height="800" loading="lazy" decoding="async" class="arow__thumb" alt="Two illustrated roads: a clear road through green hills above, a winding road through grey rubble below.">
+              <span class="arow__text-wrap">
+                <span class="arow__meta"><span class="arow__cat">Programming best practice</span><span class="status status--live">Article</span></span>
+                <span class="arow__title">The Road to Better Programming</span>
+                <span class="arow__text">Good programming handles the expected, but great programming anticipates the unexpected.</span>
+                <span class="arow__date">Read the article &rarr;</span>
+              </span>
+            </a>
+          </li>
+        </ul>
       </div>
       <div class="tbc"><b>In preparation</b>The topics below are proposals for future articles. They are not published pieces and do not yet represent Shafi's written views.</div>
       <div class="flex flex-wrap items-center justify-between gap-3">
