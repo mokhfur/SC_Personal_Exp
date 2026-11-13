@@ -1,0 +1,6 @@
+# Shafi Chowdhury — https://mokhfur.github.io/SC_Personal_Exp/
+User-agent: *
+Allow: /
+Disallow: /assets/publications.py
+
+Sitemap: https://mokhfur.github.io/SC_Personal_Exp/sitemap.xml
