@@ -180,6 +180,29 @@
   .photo > a:hover { border-color: rgba(34,211,238,.6); transform: translateY(-2px); }
   .photo img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
   .photo--portrait img { object-position: center 26%; }
+  .photo > a { cursor: zoom-in; }
+  .lb { position: fixed; inset: 0; z-index: 100; display: grid; grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center; gap: 10px; padding: 18px; background: rgba(5,8,14,.93);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .lb[hidden] { display: none; }
+  .lb__fig { margin: 0; display: grid; gap: 12px; justify-items: center; min-width: 0; }
+  .lb__fig img { display: block; max-width: 100%; max-height: 76vh; border-radius: 14px;
+    border: 1px solid var(--line-2); background: var(--ink-2); }
+  .lb__meta { display: grid; gap: 6px; justify-items: center; text-align: center; }
+  .lb__cap { font: 500 12px/1.6 'JetBrains Mono', monospace; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); }
+  .lb__count { font: 11px 'JetBrains Mono', monospace; color: var(--dim); }
+  .lb__btn { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid var(--line-2); background: rgba(255,255,255,.05); color: var(--text);
+    cursor: pointer; transition: background .25s, border-color .25s, transform .25s var(--ease-out); }
+  .lb__btn:hover { background: rgba(255,255,255,.12); border-color: rgba(34,211,238,.6); transform: scale(1.06); }
+  .lb__btn svg { width: 20px; height: 20px; }
+  .lb__close { position: absolute; top: max(18px, env(safe-area-inset-top, 0px)); right: 18px; z-index: 2; }
+  @media (max-width: 640px) {
+    .lb { padding: 12px; gap: 6px; }
+    .lb__btn { width: 40px; height: 40px; }
+    .lb__fig img { max-height: 66vh; }
+  }
   .photo figcaption { font: 500 11px/1.6 'JetBrains Mono', monospace; letter-spacing: .08em;
     text-transform: uppercase; color: var(--dim); }
   .photo figcaption a { color: var(--muted); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.35); }
@@ -731,25 +754,25 @@
     <div class="glass reveal p-6 sm:p-8 grid gap-6 min-w-0">
       <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-cy"></span>Photographs</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Event photographs</h2></div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <figure class="photo col-span-2">
+        <figure class="photo">
           <a href="assets/photos/phuse-sde-frankfurt-2018.jpg" target="_blank" rel="noopener">
             <img src="assets/photos/phuse-sde-frankfurt-2018.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Shafi Chowdhury presenting &quot;Using Data Visualisation to Communicate the Story of the Trial Results&quot; at the PhUSE single day event in Frankfurt, May 2018">
           </a>
           <figcaption>PhUSE <a href="https://x.com/hashtag/SDEFrankfurt?src=hashtag_click" target="_blank" rel="noopener">SDE Frankfurt</a>, 2018</figcaption>
         </figure>
-        <figure class="photo col-span-2">
+        <figure class="photo">
           <a href="assets/photos/phuse-eu-connect-2018.jpg" target="_blank" rel="noopener">
             <img src="assets/photos/phuse-eu-connect-2018.jpg" width="1600" height="1066" loading="lazy" decoding="async" alt="Shafi Chowdhury, centre, with two colleagues at the Shafi Consultancy exhibition stand at PhUSE EU Connect 2018, showing the company&#39;s risk-based monitoring and reporting applications">
           </a>
           <figcaption>PhUSE EU Connect, 2018</figcaption>
         </figure>
-        <figure class="photo photo--portrait col-span-2">
+        <figure class="photo photo--portrait">
           <a href="assets/photos/phuse-us-connect-2019-baltimore.jpg" target="_blank" rel="noopener">
             <img src="assets/photos/phuse-us-connect-2019-baltimore.jpg" width="1050" height="1400" loading="lazy" decoding="async" alt="Shafi Chowdhury, right, with a colleague at the Shafi Consultancy stand at PhUSE US Connect 2019 in Baltimore, with the company&#39;s reporting application shown on screen">
           </a>
           <figcaption>PhUSE US Connect, Baltimore, 2019</figcaption>
         </figure>
-        <figure class="photo col-span-2">
+        <figure class="photo">
           <a href="assets/photos/phuse-brighton-2011.jpg" target="_blank" rel="noopener">
             <img src="assets/photos/phuse-brighton-2011.jpg" width="640" height="480" loading="lazy" decoding="async" alt="Shafi Chowdhury with colleagues at the Shafi Consultancy Ltd. stand at the PhUSE conference in Brighton, 2011, under a banner reading &quot;Delivering Success Through Partnership for Over 10 Years&quot;">
           </a>
@@ -779,6 +802,16 @@
   </div>
 </section>
 </main>
+<div id="lightbox" class="lb" hidden role="dialog" aria-modal="true" aria-label="Event photographs">
+  <button type="button" class="lb__btn lb__close" data-lb-close aria-label="Close"><i data-lucide="x"></i></button>
+  <button type="button" class="lb__btn" data-lb-prev aria-label="Previous photograph"><i data-lucide="chevron-left"></i></button>
+  <figure class="lb__fig">
+    <img id="lbImg" src="" alt="">
+    <figcaption class="lb__meta"><span class="lb__cap" id="lbCap"></span><span class="lb__count" id="lbCount"></span></figcaption>
+  </figure>
+  <button type="button" class="lb__btn" data-lb-next aria-label="Next photograph"><i data-lucide="chevron-right"></i></button>
+</div>
+
 <footer class="layer border-t border-white/10">
   <div class="wrap pt-10 pb-2 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
     <nav aria-label="Pages" class="grid gap-2 content-start">
@@ -1224,6 +1257,69 @@
       if (count) count.textContent = shown + ' items';
     });
   }
+})();
+</script>
+<script>
+// Event photograph lightbox: click a tile for the full-size image, then browse
+// left and right. Each tile is still a plain link, so without JS it simply opens.
+(function () {
+  var links = [].slice.call(document.querySelectorAll('figure.photo > a'));
+  var lb = document.getElementById('lightbox');
+  if (!links.length || !lb) return;
+  var img = document.getElementById('lbImg'), cap = document.getElementById('lbCap'),
+      count = document.getElementById('lbCount'), i = 0, lastFocus = null;
+  var buttons = [].slice.call(lb.querySelectorAll('.lb__btn'));
+
+  function show(n) {
+    i = (n + links.length) % links.length;
+    var a = links[i], thumb = a.querySelector('img'), fc = a.parentNode.querySelector('figcaption');
+    img.src = a.getAttribute('href');
+    img.alt = thumb ? thumb.alt : '';
+    cap.textContent = fc ? fc.textContent.trim() : '';
+    count.textContent = (i + 1) + ' of ' + links.length;
+    [-1, 1].forEach(function (d) {                       // preload the neighbours
+      var pre = new Image(); pre.src = links[(i + d + links.length) % links.length].getAttribute('href');
+    });
+  }
+  function open(n) {
+    lastFocus = document.activeElement; show(n); lb.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    lb.querySelector('[data-lb-close]').focus();
+  }
+  function close() {
+    lb.hidden = true; img.src = ''; document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  links.forEach(function (a, n) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;   // let people open a new tab
+      e.preventDefault(); open(n);
+    });
+  });
+  lb.addEventListener('click', function (e) {
+    if (e.target.closest('[data-lb-next]')) show(i + 1);
+    else if (e.target.closest('[data-lb-prev]')) show(i - 1);
+    else if (e.target.closest('[data-lb-close]') || e.target === lb || e.target.closest('.lb__fig') === null) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') show(i + 1);
+    else if (e.key === 'ArrowLeft') show(i - 1);
+    else if (e.key === 'Tab') {                           // keep focus inside the dialog
+      e.preventDefault();
+      var at = buttons.indexOf(document.activeElement);
+      buttons[(at + (e.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
+    }
+  });
+  var x0 = null;                                          // swipe on touch
+  lb.addEventListener('touchstart', function (e) { x0 = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, { passive: true });
 })();
 </script>
 </body>
