@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Speaking &amp; Events · Shafi Chowdhury</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Speaking engagements, conferences, publications and industry contributions by Shafi Chowdhury in clinical programming and the pharmaceutical industry.">
+<meta name="description" content="Papers, posters and conference presentations by Shafi Chowdhury at PhUSE, PSI, PAGE and PharmaSUG, 2005–2026, on clinical programming, risk-based monitoring, NONMEM datasets and data integrity.">
 <meta name="theme-color" content="#0B0F19">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Speaking &amp; Events · Shafi Chowdhury">
@@ -155,6 +155,16 @@
 
   .photo-slot { aspect-ratio: 4 / 3; max-width: 100%; border: 1px dashed rgba(168,85,247,.6); border-radius: 14px; display: grid; place-items: center; gap: 6px; text-align: center; padding: 12px; font: 12px/1.5 'JetBrains Mono', monospace; color: var(--muted); background: rgba(255,255,255,.02); }
   .photo-slot svg { width: 22px; height: 22px; color: var(--purple); }
+
+  .pub__venue { font: 500 10.5px/1.6 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+  .pub__title { margin: 0; font: 500 15.5px/1.45 'IBM Plex Sans', sans-serif; color: var(--text); }
+  .pub__title .status { margin-left: 8px; vertical-align: 2px; }
+  .pub__link { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.45); transition: border-color .2s, color .2s; }
+  .pub__link:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
+  .pub__authors { font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .filter { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; font: 500 12.5px/1 'IBM Plex Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all .25s var(--ease-out); }
+  .filter:hover { color: var(--text); border-color: var(--line-2); }
+  .filter[aria-pressed="true"] { color: #fff; border-color: var(--purple); background: rgba(168,85,247,.14); }
 
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
@@ -307,43 +317,373 @@
         <p class="kicker hero-in" style="--d:1"><span class="dot dot-pu"></span>Speaking, conferences &amp; contributions</p>
         <h1 class="h-display hero-in text-[clamp(2.4rem,5vw,4rem)] font-semibold leading-[1.05]" style="--d:2">Engaging with the clinical research community</h1>
       </div>
-      <p class="lg:col-span-5 hero-in text-[17px] leading-[1.75] text-mute" style="--d:3">Conferences, presentations, publications and knowledge-sharing in clinical programming and the wider pharmaceutical industry.</p>
+      <p class="lg:col-span-5 hero-in text-[17px] leading-[1.75] text-mute" style="--d:3">36 papers and presentations and 3 posters at PhUSE, PSI, PAGE and PharmaSUG between 2005 and 2026, on clinical programming, risk-based monitoring, NONMEM datasets and data integrity.</p>
     </div>
   </div>
 </section>
 <section class="pb-20 lg:pb-28">
   <div class="wrap grid gap-10">
     <div class="grid gap-5">
-      <div class="reveal grid gap-2"><p class="kicker"><span class="dot dot-em"></span>Professional communities</p><h2 class="h-display text-[clamp(1.6rem,3vw,2.3rem)] font-semibold">Communities of interest</h2><p class="text-[13px] text-dim">Communities where Shafi has presented his work.</p></div>
+      <div class="reveal grid gap-2"><p class="kicker"><span class="dot dot-em"></span>Professional communities</p><h2 class="h-display text-[clamp(1.6rem,3vw,2.3rem)] font-semibold">Communities of interest</h2><p class="text-[13px] text-dim">Communities where Shafi and his team have presented their work.</p></div>
       <div class="grid md:grid-cols-3 gap-5">
-      <article class="glass hud reveal p-6 sm:p-7 grid gap-3 content-start min-w-0"><p class="h-display text-[1.6rem] font-semibold text-em">PHUSE</p><p class="text-[14px] leading-[1.7] text-mute">An independent, not-for-profit community for data scientists, statisticians and programmers in healthcare and life sciences. Thirteen presentations, 2010–2026.</p></article>
-      <article class="glass hud reveal p-6 sm:p-7 grid gap-3 content-start min-w-0"><p class="h-display text-[1.6rem] font-semibold text-em">PSI</p><h2 class="text-[15px] font-medium">Statisticians in the Pharmaceutical Industry</h2><p class="text-[14px] leading-[1.7] text-mute">A professional association supporting statisticians and related professionals across the pharmaceutical industry. Presented in 2018.</p></article>
-      <article class="glass hud reveal p-6 sm:p-7 grid gap-3 content-start min-w-0"><p class="h-display text-[1.6rem] font-semibold text-em">PAGE</p><h2 class="text-[15px] font-medium">Population Approach Group in Europe</h2><p class="text-[14px] leading-[1.7] text-mute">A scientific forum for pharmacometrics and population modelling, including PK/PD analysis. Presented in 2017.</p></article>
+      <article class="glass hud reveal p-6 sm:p-7 grid gap-3 content-start min-w-0"><p class="h-display text-[1.6rem] font-semibold text-em">PhUSE</p><p class="text-[14px] leading-[1.7] text-mute">An independent, not-for-profit community for data scientists, statisticians and programmers in healthcare and life sciences. Shafi's main forum since 2006: annual conferences, EU and US Connect, single-day events and the 2012 FDA/PhUSE workshop.</p></article>
+      <article class="glass hud reveal p-6 sm:p-7 grid gap-3 content-start min-w-0"><p class="h-display text-[1.6rem] font-semibold text-em">PSI</p><h2 class="text-[15px] font-medium">Statisticians in the Pharmaceutical Industry</h2><p class="text-[14px] leading-[1.7] text-mute">A professional association supporting statisticians and related professionals across the pharmaceutical industry. Papers in 2016, 2017 and 2018.</p></article>
+      <article class="glass hud reveal p-6 sm:p-7 grid gap-3 content-start min-w-0"><p class="h-display text-[1.6rem] font-semibold text-em">PAGE</p><h2 class="text-[15px] font-medium">Population Approach Group in Europe</h2><p class="text-[14px] leading-[1.7] text-mute">A scientific forum for pharmacometrics and population modelling, including PK/PD analysis. NONMEM dataset work presented in 2005 and 2017.</p></article>
       </div>
     </div>
-    <div class="glass reveal p-6 sm:p-8 grid gap-5 min-w-0">
-      <div class="flex flex-wrap items-end justify-between gap-3"><div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Conferences &amp; presentations</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Conference presentations</h2></div><p class="text-[12.5px] text-dim">15 presentations, 2010–2026, oldest first.</p></div>
+    <div class="grid gap-5">
+      <div class="reveal grid gap-4">
+        <div class="flex flex-wrap items-end justify-between gap-3"><div class="grid gap-2"><p class="kicker"><span class="dot dot-pu"></span>Papers, posters &amp; presentations</p><h2 class="h-display text-[clamp(1.6rem,3vw,2.3rem)] font-semibold">Publications</h2></div><p class="font-mono text-[11px] text-dim" data-count-label aria-live="polite">39 items</p></div>
+        <div class="flex flex-wrap gap-2" data-filters role="group" aria-label="Filter by theme"><button class="filter" type="button" aria-pressed="true" data-filter="all">All themes</button><button class="filter" type="button" aria-pressed="false" data-filter="Programming">Programming</button><button class="filter" type="button" aria-pressed="false" data-filter="Risk Based Monitoring">Risk Based Monitoring</button><button class="filter" type="button" aria-pressed="false" data-filter="NONMEM">NONMEM</button><button class="filter" type="button" aria-pressed="false" data-filter="Fraudulent Data &amp; Data Transparency">Fraudulent Data &amp; Data Transparency</button></div>
+        <p class="text-[13px] text-dim">Grouped by theme, most recent first. Links to the papers will be added as they are supplied.</p>
+      </div>
+    <div class="glass reveal p-6 sm:p-8 grid gap-5 min-w-0" data-theme-block="Programming">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Theme</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Programming</h2></div>
+        <p class="text-[12.5px] text-dim">26 items</p>
+      </div>
       <ol class="milestones">
-          <li><p class="ms-when">2010<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Generate ATTRIB and FORMAT Statements from the SAP</p></div></li>
-          <li><p class="ms-when">2011<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Managing Data Issues Identified During Programming</p></div></li>
-          <li><p class="ms-when">2013<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Risk-Based Monitoring - Why Does it Matter to Programmers?</p></div></li>
-          <li><p class="ms-when">2015<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">The rocky road to Data Transparency</p></div></li>
-          <li><p class="ms-when">2016<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Using Meta Data to drive standards, speed, consistency and quality in reporting</p></div></li>
-          <li><p class="ms-when">2016<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Making the leap from Excel to a Database used for Reporting</p></div></li>
-          <li><p class="ms-when">2017<br><span class="text-[11px]" style="color:#A855F7">PAGE meeting</span></p><div class="ms-body"><p class="ms-title">Using ‘Big’ NONMEM Dataset Generated from Standard SDTM to Review Data and Accelerate Model Building Process</p></div></li>
-          <li><p class="ms-when">2018<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Generating tables, listings and figures without any programs</p></div></li>
-          <li><p class="ms-when">2018<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Using data visualisation to communicate the story of the trial results</p></div></li>
-          <li><p class="ms-when">2018<br><span class="text-[11px]" style="color:#34D399">PSI conference</span></p><div class="ms-body"><p class="ms-title">Fraudulent data detection in clinical trial using dynamic clustering</p></div></li>
-          <li><p class="ms-when">2021<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Automation and Central Repository, Are we achieving our aim?</p></div></li>
-          <li><p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">How can we integrate new technology and maintain data integrity?</p></div></li>
-          <li><p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Streamlining the usage of SAS, R, Python into our process workflow</p></div></li>
-          <li><p class="ms-when">2023<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Traceability confirmation at your fingertips</p></div></li>
-          <li><p class="ms-when">2026<br><span class="text-[11px]" style="color:#22D3EE">PHUSE conference</span></p><div class="ms-body"><p class="ms-title">Will AI give me wings</p></div></li>
-        </ol>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2026<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE SDE, Frankfurt</p>
+              <p class="pub__title">What if the data does not support the expected decision? </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2025<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE SDE, Twickenham</p>
+              <p class="pub__title">Accelerating Clinical Data Flow from Protocol to Submission </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy &amp; Subash Sadanandan, Datamatica</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2023<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE EU Connect, Birmingham</p>
+              <p class="pub__title">Traceability confirmation at your fingertips </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE EU Connect, Belfast</p>
+              <p class="pub__title">Streamlining the Usage of SAS, R and Python in our Process Workflow </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE EU Connect, Belfast</p>
+              <p class="pub__title">How Can We Integrate New Technology and Maintain Data Integrity? </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2021<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE EMEA Spring SDE</p>
+              <p class="pub__title">Automation and Central Repository: Are we achieving our aim? </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2018<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE US Connect, Raleigh</p>
+              <p class="pub__title">Generating tables, listings and figures without any programs </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Md Zobair, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2018<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE US Connect, Raleigh</p>
+              <p class="pub__title">How automatic visualization of summary results can speed up review of tables </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Rajwanur Rahman, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2017<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Edinburgh</p>
+              <p class="pub__title">Tips and Tricks to Create In-text Tables in Clinical Trial Reporting Using SAS </p>
+              <p class="pub__authors">Md. Jabrul Islam &amp; Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2017<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Edinburgh</p>
+              <p class="pub__title">Presenting Study Results From A Metadata Driven Ecosystem </p>
+              <p class="pub__authors">Md. Rajwanur Rahman &amp; Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2017<br><span class="text-[11px]" style="color:#34D399">PSI</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PSI conference, London</p>
+              <p class="pub__title">Performing Statistical Analysis on ‘Big’ Project Dataset to Mine Associations and Identify Data Issues on an Ongoing Basis </p>
+              <p class="pub__authors">Kantish Chowdhury, Md. Rajwanur Rahman &amp; Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2016<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Barcelona</p>
+              <p class="pub__title">Making the leap from Excel to a Database used for Reporting </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Md. Zobair, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2016<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Barcelona</p>
+              <p class="pub__title">Using Meta Data to drive standards, speed, consistency and quality in reporting </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy &amp; Daniel Boisvert, Biogen, U.S.A.</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2016<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Barcelona</p>
+              <p class="pub__title">Using Meta Data to drive standards, speed, consistency and quality in reporting <span class="status">Poster</span></p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy &amp; Daniel Boisvert, Biogen, U.S.A.</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2015<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Vienna</p>
+              <p class="pub__title">Using Graphics to Present the Study Result as a Story </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Md. Rajwanur Rahman, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2015<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Vienna</p>
+              <p class="pub__title">Introduction to GPP with Hints and Tips to Make them Second Nature </p>
+              <p class="pub__authors">Alexandra Marquat, Boehringer Ingelheim; Shafi Chowdhury, Shafi Consultancy &amp; Beate Hientzsch, Accovion</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2015<br><span class="text-[11px]" style="color:#9AA6BC">PharmaSUG</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PharmaSUG conference</p>
+              <p class="pub__title">Essential Guide to Good Programming Practice </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy; Mark Foxwell, PRA Health Sciences &amp; Cindy Song, Sanofi-Aventis</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2015<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE SDE, Frankfurt</p>
+              <p class="pub__title">GPP: Gambling with Performance and Productivity </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2014<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, London</p>
+              <p class="pub__title">Accessing Study Results Online </p>
+              <p class="pub__authors">Shafi Chowdhury, Md. Rajwanur Rahman &amp; Mokhfur Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2013<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Brussels</p>
+              <p class="pub__title">Descriptive Summary Tables Made Easy </p>
+              <p class="pub__authors">Shafi Chowdhury, Mohammad Siddick &amp; Rafi Rahi, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2012<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Budapest</p>
+              <p class="pub__title">Macro to Replace Missing Values </p>
+              <p class="pub__authors">Mokhfur Alam Chowdhury &amp; Kamrunnisa Runu, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2011<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Brighton</p>
+              <p class="pub__title">Managing Data Issues Identified During Programming </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Aminul Islam, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2010<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Berlin</p>
+              <p class="pub__title">Generate ATTRIB and FORMAT Statements from the SAP </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2008<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Manchester</p>
+              <p class="pub__title">…but there are no error messages in the log </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2008<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Manchester</p>
+              <p class="pub__title">Offshoring – Have I seen this CV before? </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Programming">
+            <p class="ms-when">2006<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Dublin</p>
+              <p class="pub__title">CALL EXECUTE and Graphs </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Daniel Boisvert</p>
+            </div>
+          </li>
+      </ol>
+    </div>
+    <div class="glass reveal p-6 sm:p-8 grid gap-5 min-w-0" data-theme-block="Risk Based Monitoring">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Theme</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Risk Based Monitoring</h2></div>
+        <p class="text-[12.5px] text-dim">6 items</p>
+      </div>
+      <ol class="milestones">
+          <li class="pub" data-theme="Risk Based Monitoring">
+            <p class="ms-when">2020<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE EU Connect (virtual)</p>
+              <p class="pub__title">Analyses used in Risk Based Monitoring </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Risk Based Monitoring">
+            <p class="ms-when">2019<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE US Connect</p>
+              <p class="pub__title">How to Take the Risk out of Risk Based Monitoring </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Nurahamid Siddiki, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Risk Based Monitoring">
+            <p class="ms-when">2013<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Brussels</p>
+              <p class="pub__title">Risk-Based Monitoring – Why Does it Matter to Programmers? </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Risk Based Monitoring">
+            <p class="ms-when">2012<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Budapest</p>
+              <p class="pub__title">Centralized Risk-based Source Data Verification </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Mokhfur Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Risk Based Monitoring">
+            <p class="ms-when">2012<br><span class="text-[11px]" style="color:#22D3EE">FDA/PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">FDA/PhUSE workshop, Washington DC</p>
+              <p class="pub__title">Centralised Risk-Based Source Data Verification </p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Raahsalah Salak, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Risk Based Monitoring">
+            <p class="ms-when">2012<br><span class="text-[11px]" style="color:#22D3EE">FDA/PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">FDA/PhUSE workshop, Washington DC</p>
+              <p class="pub__title">Centralised Risk-Based Source Data Verification <span class="status">Poster</span></p>
+              <p class="pub__authors">Shafi Chowdhury &amp; Raahsalah Salak, Shafi Consultancy</p>
+            </div>
+          </li>
+      </ol>
+    </div>
+    <div class="glass reveal p-6 sm:p-8 grid gap-5 min-w-0" data-theme-block="NONMEM">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Theme</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">NONMEM</h2></div>
+        <p class="text-[12.5px] text-dim">4 items</p>
+      </div>
+      <ol class="milestones">
+          <li class="pub" data-theme="NONMEM">
+            <p class="ms-when">2017<br><span class="text-[11px]" style="color:#A855F7">PAGE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PAGE meeting, Budapest</p>
+              <p class="pub__title">Using ‘Big’ NONMEM Dataset Generated from Standard SDTM to Review Data and Accelerate Model Building Process </p>
+              <p class="pub__authors">Kantish Chowdhury, Md. Rajwanur Rahman &amp; Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="NONMEM">
+            <p class="ms-when">2016<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Barcelona</p>
+              <p class="pub__title">Using graphics to review and present PK/PD data for maximum impact </p>
+              <p class="pub__authors">Md. Rajwanur Rahman, Shafi Chowdhury &amp; Marco Ackermann, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="NONMEM">
+            <p class="ms-when">2010<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Berlin</p>
+              <p class="pub__title">Creating NONMEM Datasets – How to Escape the Nightmare </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="NONMEM">
+            <p class="ms-when">2005<br><span class="text-[11px]" style="color:#A855F7">PAGE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PAGE meeting, Pamplona</p>
+              <p class="pub__title">Producing NONMEM Datasets <span class="status">Poster</span></p>
+              <p class="pub__authors">Shafi Chowdhury, Alexander Staab, Karl-Heinz Liesenfeld, Carmen Burger &amp; Modesta Wiersema</p>
+            </div>
+          </li>
+      </ol>
+    </div>
+    <div class="glass reveal p-6 sm:p-8 grid gap-5 min-w-0" data-theme-block="Fraudulent Data &amp; Data Transparency">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-pu"></span>Theme</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Fraudulent Data &amp; Data Transparency</h2></div>
+        <p class="text-[12.5px] text-dim">3 items</p>
+      </div>
+      <ol class="milestones">
+          <li class="pub" data-theme="Fraudulent Data &amp; Data Transparency">
+            <p class="ms-when">2018<br><span class="text-[11px]" style="color:#34D399">PSI</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PSI conference, Amsterdam</p>
+              <p class="pub__title">Fraudulent data detection in clinical trial using dynamic clustering </p>
+              <p class="pub__authors">Dr. Md. Atiqul Islam, Shahjalal University; Shafi Chowdhury &amp; Md. Rajwanur Rahman, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Fraudulent Data &amp; Data Transparency">
+            <p class="ms-when">2016<br><span class="text-[11px]" style="color:#34D399">PSI</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PSI conference, Berlin</p>
+              <p class="pub__title">Fraudulent Data Checks and How to Develop them </p>
+              <p class="pub__authors">Shafi Chowdhury, Aminul Islam &amp; Md. Jabrul Islam, Shafi Consultancy</p>
+            </div>
+          </li>
+          <li class="pub" data-theme="Fraudulent Data &amp; Data Transparency">
+            <p class="ms-when">2015<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p>
+            <div class="ms-body">
+              <p class="pub__venue">PhUSE conference, Vienna</p>
+              <p class="pub__title">The rocky road to Data Transparency </p>
+              <p class="pub__authors">Shafi Chowdhury, Shafi Consultancy</p>
+            </div>
+          </li>
+      </ol>
+    </div>
     </div>
     <div class="glass reveal p-6 sm:p-8 grid gap-6 min-w-0">
-      <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-cy"></span>Publications &amp; photographs</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Contributions</h2></div>
-      <div class="tbc"><b>Publications to be supplied</b>Conference papers are listed above. Journal publications, if any, to be supplied with title, authors, journal, year and a DOI.</div>
+      <div class="grid gap-2"><p class="kicker !text-[10.5px]"><span class="dot dot-cy"></span>Photographs</p><h2 class="h-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-semibold">Event photographs</h2></div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         <div class="photo-slot"><i data-lucide="image"></i><span>Event photograph 1<br>to be supplied</span></div>
         <div class="photo-slot"><i data-lucide="image"></i><span>Event photograph 2<br>to be supplied</span></div>
@@ -757,6 +1097,18 @@
     tip.style.left = left + 'px'; tip.style.top = Math.max(y, tip.offsetHeight + 18) + 'px';
   }
 
+
+  var bar = document.querySelector('[data-filters]');
+  if (bar) {
+    var blocks = [].slice.call(document.querySelectorAll('[data-theme-block]')), count = document.querySelector('[data-count-label]');
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('.filter'); if (!b) return;
+      [].forEach.call(bar.querySelectorAll('.filter'), function (c) { c.setAttribute('aria-pressed', String(c === b)); });
+      var f = b.getAttribute('data-filter'), shown = 0;
+      blocks.forEach(function (bl) { var on = f === 'all' || bl.getAttribute('data-theme-block') === f; bl.hidden = !on; if (on) shown += bl.querySelectorAll('.pub').length; });
+      if (count) count.textContent = shown + ' items';
+    });
+  }
 })();
 </script>
 </body>
