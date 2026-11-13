@@ -175,6 +175,11 @@
 
   .pub__venue { font: 500 10.5px/1.6 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
 
+  /* LinkedIn feed (SociableKit embed) — the widget renders its own light cards,
+     so it is given room and a soft frame rather than being restyled. */
+  .sk-feed { min-height: 220px; border-radius: 14px; overflow: hidden; }
+  .sk-feed > div { min-height: 220px; }
+
   /* nav */
   .nav { transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
   .nav.scrolled { background: rgba(11,15,25,.72); border-bottom-color: var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -300,6 +305,26 @@
         <span class="inline-flex items-center gap-2"><span class="dot dot-pu"></span>Advanced modelling</span>
       </p>
       <a href="#about" class="kicker no-underline hover:text-white transition-colors"><span class="scroll-cue inline-flex"><i data-lucide="chevrons-down" class="w-4 h-4"></i></span>Scroll</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== LINKEDIN FEED ============================== -->
+<section id="linkedin" class="pb-4 lg:pb-8">
+  <div class="wrap">
+    <div class="glass hud reveal p-6 sm:p-8 grid gap-6 min-w-0">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div class="grid gap-3">
+          <p class="kicker !text-[10.5px]"><span class="dot dot-cy"></span>Latest from LinkedIn</p>
+          <h2 class="h-display text-[clamp(1.35rem,2.2vw,1.75rem)] font-semibold leading-[1.2]">Recent posts</h2>
+        </div>
+        <p class="text-[12.5px] text-dim max-w-[40ch]">Posts published to Shafi's LinkedIn profile, updated automatically.</p>
+      </div>
+      <div class="sk-feed">
+        <div class="sk-ww-linkedin-profile-post" data-embed-id="25729434"></div>
+        <div id="skFallback" class="tbc" hidden><b>Feed not loaded in preview</b>The LinkedIn feed is supplied by SociableKit, whose script this preview environment does not permit. It loads normally on the published site.</div>
+        <noscript><p class="text-[14px] text-mute">Shafi's LinkedIn posts are shown here when JavaScript is enabled.</p></noscript>
+      </div>
     </div>
   </div>
 </section>
@@ -1005,6 +1030,15 @@
   }
 
 })();
+</script>
+<script src="https://widgets.sociablekit.com/linkedin-profile-posts/widget.js" defer></script>
+<script>
+  // If the SociableKit script is blocked (as it is in preview sandboxes), say so
+  // rather than leaving an empty panel.
+  setTimeout(function () {
+    var w = document.querySelector('.sk-ww-linkedin-profile-post'), f = document.getElementById('skFallback');
+    if (w && f && !w.children.length) { f.hidden = false; w.style.display = 'none'; }
+  }, 4000);
 </script>
 </body>
 </html>
