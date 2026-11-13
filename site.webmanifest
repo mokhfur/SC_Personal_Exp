@@ -1,0 +1,17 @@
+{
+  "name": "Shafi Chowdhury · Founder & Managing Director, Shafi Consultancy Ltd.",
+  "short_name": "Shafi Chowdhury",
+  "description": "Personal website of Shafi Chowdhury, Founder and Managing Director of Shafi Consultancy Ltd.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#0B0F19",
+  "background_color": "#0B0F19",
+  "icons": [
+    { "src": "favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "maskable" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}
