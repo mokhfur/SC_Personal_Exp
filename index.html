@@ -193,6 +193,8 @@
   .filter:hover { color: var(--text); border-color: var(--line-2); }
   .filter[aria-pressed="true"] { color: #fff; border-color: var(--purple); background: rgba(168,85,247,.14); }
 
+  .pub__link { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.45); transition: border-color .2s, color .2s; }
+  .pub__link:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
   .pub__venue { font: 500 10.5px/1.6 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
 
   /* LinkedIn feed (SociableKit embed) — the widget renders its own light cards,
@@ -577,11 +579,11 @@
           <p class="text-[12.5px] text-dim">Five most recent of 36 papers and presentations.</p>
         </div>
         <ol class="milestones">
-          <li><p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE EU Connect, Belfast</p><p class="ms-title">How Can We Integrate New Technology and Maintain Data Integrity?</p></div></li>
-          <li><p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE EU Connect, Belfast</p><p class="ms-title">Streamlining the Usage of SAS, R and Python in our Process Workflow</p></div></li>
-          <li><p class="ms-when">2023<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE EU Connect, Birmingham</p><p class="ms-title">Traceability confirmation at your fingertips</p></div></li>
-          <li><p class="ms-when">2025<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE SDE, Twickenham</p><p class="ms-title">Accelerating Clinical Data Flow from Protocol to Submission</p></div></li>
-          <li><p class="ms-when">2026<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE SDE, Frankfurt</p><p class="ms-title">What if the data does not support the expected decision?</p></div></li>
+          <li><p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE EU Connect, Belfast</p><p class="ms-title"><a class="pub__link" href="https://www.shaficonsultancy.com/publications/integrate-new-technology-data-integrity/" target="_blank" rel="noopener">How Can We Integrate New Technology and Maintain Data Integrity?</a></p></div></li>
+          <li><p class="ms-when">2022<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE EU Connect, Belfast</p><p class="ms-title"><a class="pub__link" href="https://www.shaficonsultancy.com/publications/streamlining-usage-sas-r-python-process/" target="_blank" rel="noopener">Streamlining the Usage of SAS, R and Python in our Process Workflow</a></p></div></li>
+          <li><p class="ms-when">2023<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE EU Connect, Birmingham</p><p class="ms-title"><a class="pub__link" href="https://www.shaficonsultancy.com/publications/traceability-confirmation-your-fingertips/" target="_blank" rel="noopener">Traceability confirmation at your fingertips</a></p></div></li>
+          <li><p class="ms-when">2025<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE SDE, Twickenham</p><p class="ms-title"><a class="pub__link" href="https://www.shaficonsultancy.com/publications/accelerating-clinical-data-flow-protocol-submission/" target="_blank" rel="noopener">Accelerating Clinical Data Flow from Protocol to Submission</a></p></div></li>
+          <li><p class="ms-when">2026<br><span class="text-[11px]" style="color:#22D3EE">PhUSE</span></p><div class="ms-body"><p class="pub__venue">PhUSE SDE, Frankfurt</p><p class="ms-title"><a class="pub__link" href="https://www.shaficonsultancy.com/publications/if-data-support-expected-decision/" target="_blank" rel="noopener">What if the data does not support the expected decision?</a></p></div></li>
         </ol>
         <div class="flex flex-wrap items-center justify-between gap-4 pt-1">
           <p class="text-[13px] text-dim">All 39 papers, posters and presentations, grouped by theme, are on the Speaking &amp; Events page.</p>
