@@ -73,7 +73,7 @@ After publishing, submit `sitemap.xml` in Google Search Console and Bing Webmast
 ## Content notes
 
 Placeholder marks (dashed purple underlines, and "Still to be added" notes) flag information
-Shafi has not yet supplied — currently the contact email, LinkedIn URL and event photographs.
+Shafi has not yet supplied — currently the contact email and event photographs.
 Nothing on the site invents employers, titles, qualifications, publications or client results.
 
 All charts, tables, listings and model outputs use simulated data and do not represent any
