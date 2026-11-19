@@ -78,3 +78,10 @@ Nothing on the site invents employers, titles, qualifications, publications or c
 
 All charts, tables, listings and model outputs use simulated data and do not represent any
 real study, sponsor or patient.
+
+To switch to your live domain, run this command in your local repo (replacing shafi-chowdhury.com with your real domain):
+
+```
+sed -i "s|https://mokhfur.github.io/SC_Personal_Exp/|https://shafi-chowdhury.com/|g" *.html
+```
+
